@@ -30,6 +30,21 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 
 If the spec covers multiple independent subsystems, it should have been broken into sub-project specs during brainstorming. If it wasn't, suggest breaking this into separate plans — one per subsystem. Each plan should produce working, testable software on its own.
 
+## Organize Tasks Under User Stories
+
+Group the plan's Tasks under **User Story (US)** headings. Each US is one
+**complete vertical slice** — a single service/feature that works end-to-end
+(data + logic + UI it needs), not a technical layer.
+
+- One US = one feature. Don't mix several features into one US.
+- Never slice by layer: `US-1 data types`, `US-2 logic`, `US-3 UI` is wrong —
+  none is usable alone. Slice by feature instead.
+- A US contains its Tasks; the Tasks keep their bite-sized TDD steps.
+
+Use `## US-N: [feature name]` headings, with that US's `### Task N` entries
+nested beneath. The `refining-plans` skill audits this slicing after the plan
+is written, so getting the US boundaries roughly right here saves a round trip.
+
 ## File Structure
 
 Before defining tasks, map out which files will be created or modified and what each one is responsible for. This is where decomposition decisions get locked in.
@@ -161,22 +176,16 @@ After writing the complete plan, look at the spec with fresh eyes and check the 
 
 If you find issues, fix them inline. No need to re-review — just fix and move on. If you find a spec requirement with no task, add the task.
 
-## Execution Handoff
+## Refine Handoff
 
-After saving the plan, offer execution choice:
+After saving the plan, do NOT jump to execution. Hand off to the refining
+step, which audits the User Story slicing and gets the human's approval before
+any code is written:
 
-**"Plan complete and saved to `docs/superpowers/plans/<filename>.md`. Two execution options:**
+**"Plan complete and saved to `docs/superpowers/plans/<filename>.md`. Next I'll refine it into vertical-slice User Stories and get your approval."**
 
-**1. Subagent-Driven (recommended)** - I dispatch a fresh subagent per task, review between tasks, fast iteration
+- **REQUIRED SUB-SKILL:** Use superpowers:refining-plans
 
-**2. Inline Execution** - Execute tasks in this session using executing-plans, batch execution with checkpoints
-
-**Which approach?"**
-
-**If Subagent-Driven chosen:**
-- **REQUIRED SUB-SKILL:** Use superpowers:subagent-driven-development
-- Fresh subagent per task + two-stage review
-
-**If Inline Execution chosen:**
-- **REQUIRED SUB-SKILL:** Use superpowers:executing-plans
-- Batch execution with checkpoints for review
+`refining-plans` is the only skill you invoke after writing-plans. It handles
+the execution handoff (subagent-driven vs inline) once the User Stories are
+approved.
