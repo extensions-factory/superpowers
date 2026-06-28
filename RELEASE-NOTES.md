@@ -1,5 +1,13 @@
 # Superpowers Release Notes
 
+## v6.2.0 (2026-06-28)
+
+### Product Roadmap
+
+- **A real roadmap template.** `brainstorming` now generates `docs/superpowers/ROADMAP.html` from a self-contained, dark, JetBrains-Space-style template shipped at `assets/roadmap.html` — inline CSS + JS, no external assets, with a sticky status-filter legend (Open / In development / In testing / Ready / Released) that filters the page live.
+- **Three-level structure: Epic → Feature → User Story.** Summary cards are Epics (listing their Features); each detail section is a Feature; the items under it are its User Stories, each with a status badge. `roadmap.json` becomes a flat array of User-Story entries grouped by `epic` and `feature`.
+- **Lifecycle wiring.** `brainstorming` seeds User Stories as `open` when a spec is written; `finishing-a-development-branch` flips a feature's stories to `released` on integration. The intermediate statuses (`dev` / `test` / `ready`) are moved by hand.
+
 ## v6.1.1 (2026-07-02)
 
 ### Codex

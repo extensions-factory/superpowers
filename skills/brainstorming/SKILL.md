@@ -118,7 +118,7 @@ digraph brainstorming {
 **Add the feature to the product roadmap:**
 
 - After writing the spec, add (or update) this feature's entry in the project roadmap so stakeholders get a comprehensive view of the product.
-- `slug` = `<topic>` from the spec filename; status = `planned`; `spec` = the spec path; `created` = today.
+- Add one entry per User Story the spec defines: `slug` = `<feature-topic>--<us-slug>`; set `epic`, `feature`, `title` (the US), a one-line `description`; `status` = `open`; `spec` = the spec path; `created` = today. If the User Stories aren't broken out yet, add a single entry for the feature and split it later.
 - Follow [roadmap.md](roadmap.md) for the schema, idempotent update rules, and the `ROADMAP.html` template. Commit `roadmap.json` and `ROADMAP.html` with the spec.
 <!-- end created by riso-tech -->
 

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Roadmap</title>
+<style>
+  :root{
+    --bg:#0e0e10; --panel:#161618; --panel-2:#1d1d20;
+    --text:#ececec; --muted:#9a9aa2; --line:#2a2a2e;
+    --open:#19c3c9; --dev:#9b6bff; --test:#f5a623; --ready:#37c871; --released:#ff4d8d;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px}
+  a{color:inherit}
+
+  /* ---- Hero ---- */
+  .hero{padding:88px 0 56px; border-bottom:1px solid var(--line)}
+  .hero h1{font-size:clamp(34px,5vw,56px); line-height:1.1; margin:0 0 32px; letter-spacing:-.02em}
+  .hero .intro{display:grid; grid-template-columns:1fr 1fr; gap:40px; max-width:920px}
+  .hero .intro p{margin:0; color:var(--muted); font-size:16px}
+
+  /* ---- Legend / filter ---- */
+  .legend{position:sticky; top:0; z-index:20; background:rgba(14,14,16,.85);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding:16px 0}
+  .legend .wrap{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+  .legend .label{color:var(--muted); font-size:13px; margin-right:6px}
+  .chip{display:inline-flex; align-items:center; gap:8px; cursor:pointer; user-select:none;
+    border:1px solid var(--line); background:var(--panel); color:var(--text);
+    padding:6px 14px; border-radius:999px; font-size:13px; font-weight:500; transition:.15s}
+  .chip:hover{border-color:#3a3a40}
+  .chip .dot{width:9px; height:9px; border-radius:50%}
+  .chip[data-status="open"] .dot{background:var(--open)}
+  .chip[data-status="dev"] .dot{background:var(--dev)}
+  .chip[data-status="test"] .dot{background:var(--test)}
+  .chip[data-status="ready"] .dot{background:var(--ready)}
+  .chip[data-status="released"] .dot{background:var(--released)}
+  .chip.active{background:#fff; color:#0e0e10; border-color:#fff}
+  .chip.active .dot{box-shadow:0 0 0 2px rgba(0,0,0,.15)}
+  .chip.all{font-weight:600}
+
+  /* ---- Summary cards ---- */
+  .summary{padding:56px 0}
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:24px}
+  .card h3{margin:0 0 16px; font-size:15px; letter-spacing:.01em}
+  .card ul{margin:0; padding:0; list-style:none}
+  .card li{color:var(--muted); font-size:14px; padding:7px 0; border-top:1px solid var(--line)}
+  .card li:first-child{border-top:0; padding-top:0}
+
+  /* ---- Detail sections ---- */
+  .section{padding:56px 0; border-top:1px solid var(--line)}
+  .section > .eyebrow{color:var(--muted); font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; margin:0 0 6px}
+  .section > h2{font-size:clamp(26px,3.4vw,40px); margin:0 0 12px; letter-spacing:-.015em}
+  .section > .lead{color:var(--muted); max-width:760px; margin:0 0 40px; font-size:16px}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:28px 56px}
+  .item{padding-bottom:4px}
+  .item .t{font-weight:600; font-size:15px; color:inherit;
+    text-decoration:underline; text-decoration-color:var(--muted);
+    text-underline-offset:3px; text-decoration-thickness:1px; transition:.15s}
+  .item .t::after{content:"\2197"; display:inline-block; margin-left:3px;
+    font-size:.85em; color:var(--muted); transition:.15s}
+  .item .t:hover{text-decoration-color:var(--text)}
+  .item .t:hover::after{color:var(--text); transform:translate(1px,-1px)}
+  .item .d{color:var(--muted); font-size:14px; margin:4px 0 10px}
+
+  /* ---- Status badge ---- */
+  .badge{display:inline-block; font-size:11px; font-weight:600; letter-spacing:.02em;
+    padding:3px 10px; border-radius:999px; color:#0e0e10; white-space:nowrap}
+  .badge.open{background:var(--open)}
+  .badge.dev{background:var(--dev); color:#fff}
+  .badge.test{background:var(--test)}
+  .badge.ready{background:var(--ready)}
+  .badge.released{background:var(--released); color:#fff}
+
+  /* ---- Filtering ---- */
+  .item.hide,.section.hide,.empty-note.hide{display:none}
+  .empty-note{padding:80px 0; text-align:center; color:var(--muted)}
+
+  footer{border-top:1px solid var(--line); padding:40px 0; color:var(--muted); font-size:13px}
+
+  @media(max-width:820px){
+    .hero .intro{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr; gap:24px}
+    .wrap{padding:0 20px}
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <h1>Product Roadmap</h1>
+      <div class="intro">
+        <p>This roadmap has three levels: <strong>Epics</strong> (the cards below), the <strong>Features</strong> inside each epic, and the <strong>User Stories</strong> listed under each feature. Replace this text with your product's vision.</p>
+        <p>Every User Story carries a status badge. Use the legend above to filter the whole page down to a single status — for example, show only what has shipped, or only what's in active development.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- LEGEND / FILTER -->
+  <nav class="legend">
+    <div class="wrap">
+      <span class="label">Filter:</span>
+      <span class="chip all active" data-status="all">All</span>
+      <span class="chip" data-status="open"><span class="dot"></span>Open</span>
+      <span class="chip" data-status="dev"><span class="dot"></span>In development</span>
+      <span class="chip" data-status="test"><span class="dot"></span>In testing</span>
+      <span class="chip" data-status="ready"><span class="dot"></span>Ready</span>
+      <span class="chip" data-status="released"><span class="dot"></span>Released</span>
+    </div>
+  </nav>
+
+  <!-- SUMMARY CARDS -->
+  <section class="summary">
+    <div class="wrap cards-wrap">
+      <div class="cards">
+        <!-- one card per EPIC; the list is its FEATURES -->
+        <div class="card">
+          <h3>Account &amp; Access</h3>
+          <ul>
+            <li>User authentication</li>
+            <li>Team &amp; permissions</li>
+            <li>Guests &amp; collaborators</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Developer Experience</h3>
+          <ul>
+            <li>Code review</li>
+            <li>CI/CD</li>
+            <li>Packages</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Platform</h3>
+          <ul>
+            <li>Extensibility</li>
+            <li>Mobile apps</li>
+            <li>Full-text search</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL SECTION 1 — one section per FEATURE; items are its USER STORIES -->
+  <section class="section" data-section>
+    <div class="wrap">
+      <p class="eyebrow">Account &amp; Access</p>
+      <h2>User authentication</h2>
+      <p class="lead">A short description of the feature. The items below are its User Stories — each has a title, a one-line description, and a status badge.</p>
+      <div class="grid">
+        <div class="item" data-status="released">
+          <a href="#" class="t">Email + password sign-in</a>
+          <div class="d">Classic credential login with secure password hashing.</div>
+          <span class="badge released">Released</span>
+        </div>
+        <div class="item" data-status="dev">
+          <a href="#" class="t">SSO / SAML</a>
+          <div class="d">Single sign-on for enterprise identity providers.</div>
+          <span class="badge dev">In development</span>
+        </div>
+        <div class="item" data-status="test">
+          <a href="#" class="t">Session management</a>
+          <div class="d">Active-device list, remote revoke, and idle timeout.</div>
+          <span class="badge test">In testing</span>
+        </div>
+        <div class="item" data-status="released">
+          <a href="#" class="t">Password reset</a>
+          <div class="d">Email-based account recovery flow.</div>
+          <span class="badge released">Released</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL SECTION 2 -->
+  <section class="section" data-section>
+    <div class="wrap">
+      <p class="eyebrow">Developer Experience</p>
+      <h2>Code review</h2>
+      <p class="lead">Everything around reviewing changes. Each User Story below ships independently.</p>
+      <div class="grid">
+        <div class="item" data-status="released">
+          <a href="#" class="t">File-level review</a>
+          <div class="d">Conduct detailed reviews at the individual file level.</div>
+          <span class="badge released">Released</span>
+        </div>
+        <div class="item" data-status="released">
+          <a href="#" class="t">Filter files by code owner</a>
+          <div class="d">Navigate review files by their respective owners.</div>
+          <span class="badge released">Released</span>
+        </div>
+        <div class="item" data-status="dev">
+          <a href="#" class="t">Inline Qodana checks</a>
+          <div class="d">Surface static-analysis results directly in the review view.</div>
+          <span class="badge dev">In development</span>
+        </div>
+        <div class="item" data-status="ready">
+          <a href="#" class="t">Mark files as read</a>
+          <div class="d">Collapse and track already-reviewed files.</div>
+          <span class="badge ready">Ready</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><p class="empty-note hide" id="emptyNote">No items match this status.</p></div>
+
+  <footer>
+    <div class="wrap">Sample roadmap template · built to mirror the JetBrains Space roadmap layout · replace all content with your own.</div>
+  </footer>
+
+<script>
+  const chips = document.querySelectorAll('.chip');
+  const items = document.querySelectorAll('.item');
+  const sections = document.querySelectorAll('[data-section]');
+  const emptyNote = document.getElementById('emptyNote');
+
+  function apply(status){
+    items.forEach(i => i.classList.toggle('hide', status !== 'all' && i.dataset.status !== status));
+    let anyVisible = false;
+    sections.forEach(s => {
+      const visible = s.querySelectorAll('.item:not(.hide)').length > 0;
+      s.classList.toggle('hide', !visible);
+      if (visible) anyVisible = true;
+    });
+    emptyNote.classList.toggle('hide', anyVisible);
+  }
+
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    apply(chip.dataset.status);
+  }));
+</script>
+</body>
+</html>
