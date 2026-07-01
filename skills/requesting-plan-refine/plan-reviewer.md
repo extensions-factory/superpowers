@@ -6,7 +6,7 @@ Use this template when dispatching a plan reviewer subagent.
 structural issues before it's executed — catching problems while they're
 still cheap to fix.
 
-````
+```
 Subagent (general-purpose):
   description: "Review implementation plan for gaps and ambiguity"
   prompt: |
@@ -92,7 +92,7 @@ Subagent (general-purpose):
     After writing the file, return ONLY: the findings file path and a
     one-line summary (e.g. "3 blocking, 2 should-fix — see {FINDINGS_FILE}").
     Do not repeat the findings in your response.
-````
+```
 
 **Placeholders:**
 - `{PLAN_FILE}` - path to the plan being reviewed
