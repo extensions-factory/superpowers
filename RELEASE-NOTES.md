@@ -1,5 +1,13 @@
 # Superpowers Release Notes
 
+## v6.3.0 (2026-07-01)
+
+### Plan Refinement
+
+- **Plan refinement is now a two-step workflow.** `writing-plans` hands optional plan review to `requesting-plan-refine`, while `receiving-plan-refine` handles the returned findings file and routes the next execution choice.
+- **The old `refining-plans` skill is removed.** Its behavior is split across request and receive skills so the review request and feedback-handling paths stay separate.
+- **Reviewer handoff tightened.** The plan-reviewer prompt uses the expected fence depth, and the execution-choice wording now matches `writing-plans`.
+
 ## v6.2.0 (2026-06-28)
 
 ### Product Roadmap
