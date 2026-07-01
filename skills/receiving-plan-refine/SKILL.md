@@ -39,10 +39,10 @@ evaluate the refine findings."
   pass.
 - **Execute** → present the execution-mode choice:
 
-> "Two execution options: **1. Subagent-Driven (recommended)** — dispatch a
-> fresh subagent per task, review between tasks. **2. Inline Execution** —
-> execute tasks in this session using executing-plans, batch execution with
-> checkpoints. Which approach?"
+> "Two execution options: **1. Subagent-Driven (recommended)** - I dispatch a
+> fresh subagent per task, review between tasks, fast iteration. **2. Inline
+> Execution** - Execute tasks in this session using executing-plans, batch
+> execution with checkpoints. Which approach?"
 
 - If Subagent-Driven: **REQUIRED SUB-SKILL:** Use
   superpowers:subagent-driven-development
