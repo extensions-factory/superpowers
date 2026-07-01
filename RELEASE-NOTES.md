@@ -1,5 +1,11 @@
 # Superpowers Release Notes
 
+## v6.3.1 (2026-07-01)
+
+### Writing Plans
+
+- **Plan handoff prompt renders cleanly.** The `writing-plans` User Review Gate now quotes the full Refine/Execute choice block instead of leaving dangling Markdown emphasis in the prompt.
+
 ## v6.3.0 (2026-07-01)
 
 ### Plan Refinement

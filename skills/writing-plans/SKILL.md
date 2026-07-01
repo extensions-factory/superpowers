@@ -179,15 +179,16 @@ If you find issues, fix them inline. No need to re-review — just fix and move 
 
 ## Execution Handoff
 
+**User Review Gate:**
 After the self-review, do NOT jump to execution. Ask the user to choose:
 
-**"Plan complete and saved to `docs/superpowers/plans/<filename>.md`. Two options:**
+> "Plan complete and saved to `docs/superpowers/plans/<filename>.md`. Two options:
 
-**1. Refine** — get an independent review pass (gaps, ambiguity, User Story slicing) before execution
+> 1. Refine — get an independent review pass (gaps, ambiguity, User Story slicing) before execution
 
-**2. Execute** — go straight to execution
+> 2. Execute — go straight to execution
 
-**Which would you like?"**
+> Which would you like?"
 
 **If Refine chosen:**
 - **REQUIRED SUB-SKILL:** Use superpowers:requesting-plan-refine
