@@ -1,5 +1,11 @@
 # Superpowers Release Notes
 
+## v6.3.2 (2026-07-01)
+
+### Plan Refinement
+
+- **Plan review returns through the user review gate.** `requesting-plan-refine` now tells the user where the review findings were saved before invoking `receiving-plan-refine`, without leaving a dangling Markdown quote.
+
 ## v6.3.1 (2026-07-01)
 
 ### Writing Plans

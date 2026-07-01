@@ -53,7 +53,10 @@ and a one-line summary — never paste findings text into your own context.
 
 ## Next Step
 
-Hand off to `superpowers:receiving-plan-refine` with the findings file path.
+**User Review Gate:**
+After the review, Report to User:
+
+> "Review complete and saved to `.superpowers/plan-refine/<plan-basename>-findings.md`."
 
 - **REQUIRED SUB-SKILL:** Use superpowers:receiving-plan-refine
 
