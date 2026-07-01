@@ -42,8 +42,9 @@ Group the plan's Tasks under **User Story (US)** headings. Each US is one
 - A US contains its Tasks; the Tasks keep their bite-sized TDD steps.
 
 Use `## US-N: [feature name]` headings, with that US's `### Task N` entries
-nested beneath. The `refining-plans` skill audits this slicing after the plan
-is written, so getting the US boundaries roughly right here saves a round trip.
+nested beneath. An optional refine pass (`requesting-plan-refine`) can audit
+this slicing after the plan is written, so getting the US boundaries roughly
+right here saves a round trip.
 
 ## File Structure
 
@@ -176,16 +177,30 @@ After writing the complete plan, look at the spec with fresh eyes and check the 
 
 If you find issues, fix them inline. No need to re-review — just fix and move on. If you find a spec requirement with no task, add the task.
 
-## Refine Handoff
+## Execution Handoff
 
-After saving the plan, do NOT jump to execution. Hand off to the refining
-step, which audits the User Story slicing and gets the human's approval before
-any code is written:
+After the self-review, do NOT jump to execution. Ask the user to choose:
 
-**"Plan complete and saved to `docs/superpowers/plans/<filename>.md`. Next I'll refine it into vertical-slice User Stories and get your approval."**
+**"Plan complete and saved to `docs/superpowers/plans/<filename>.md`. Two options:**
 
-- **REQUIRED SUB-SKILL:** Use superpowers:refining-plans
+**1. Refine** — get an independent review pass (gaps, ambiguity, User Story slicing) before execution
 
-`refining-plans` is the only skill you invoke after writing-plans. It handles
-the execution handoff (subagent-driven vs inline) once the User Stories are
-approved.
+**2. Execute** — go straight to execution
+
+**Which would you like?"**
+
+**If Refine chosen:**
+- **REQUIRED SUB-SKILL:** Use superpowers:requesting-plan-refine
+
+**If Execute chosen**, ask which execution mode:
+
+**"Two execution options:**
+
+**1. Subagent-Driven (recommended)** - I dispatch a fresh subagent per task, review between tasks, fast iteration
+
+**2. Inline Execution** - Execute tasks in this session using executing-plans, batch execution with checkpoints
+
+**Which approach?"**
+
+- If Subagent-Driven chosen: **REQUIRED SUB-SKILL:** Use superpowers:subagent-driven-development
+- If Inline Execution chosen: **REQUIRED SUB-SKILL:** Use superpowers:executing-plans
