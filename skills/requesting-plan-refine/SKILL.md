@@ -58,8 +58,6 @@ After the review, Report to User:
 
 > "Review complete and saved to `.superpowers/plan-refine/<plan-basename>-findings.md`."
 
-- **REQUIRED SUB-SKILL:** Use superpowers:receiving-plan-refine
-
 ## Red Flags
 
 **Never:**

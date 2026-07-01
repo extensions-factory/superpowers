@@ -1,5 +1,11 @@
 # Superpowers Release Notes
 
+## v6.3.3 (2026-07-01)
+
+### Plan Refinement
+
+- **Plan review stops auto-chaining into feedback handling.** `requesting-plan-refine` now ends after saving the findings path, so the human review gate can happen before `receiving-plan-refine` runs.
+
 ## v6.3.2 (2026-07-01)
 
 ### Plan Refinement
