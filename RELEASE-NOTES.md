@@ -1,5 +1,11 @@
 # Superpowers Release Notes
 
+## v6.4.0 (2026-07-02)
+
+### Greenfield Projects
+
+- **New `project-kickoff` skill for brand-new projects.** Fires before `brainstorming` when there's no repo yet: validates the idea via parallel research (discovery doc), collects stack/standards/tool decisions, bootstraps the repo, and writes a scaffold spec that flows into `writing-plans` — leaving concrete scaffolding to the existing pipeline.
+
 ## v6.3.3 (2026-07-01)
 
 ### Plan Refinement
