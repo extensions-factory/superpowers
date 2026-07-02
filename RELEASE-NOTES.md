@@ -1,5 +1,11 @@
 # Superpowers Release Notes
 
+## v6.4.1 (2026-07-02)
+
+### Plan Refinement
+
+- **Plan review instructions are less harness-specific.** `requesting-plan-refine` no longer repeats `general-purpose` in the dispatch step, and drops redundant integration notes already covered by the workflow skills.
+
 ## v6.4.0 (2026-07-02)
 
 ### Greenfield Projects

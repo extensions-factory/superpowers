@@ -39,7 +39,7 @@ mkdir -p "$dir"
 printf '*\n' > "$dir/.gitignore"
 ```
 
-**3. Dispatch a `general-purpose` subagent, filling the template at
+**3. Dispatch a subagent, filling the template at
 [plan-reviewer.md](plan-reviewer.md):**
 
 **Placeholders:**
@@ -67,9 +67,3 @@ After the review, Report to User:
   path instead
 - Skip dispatching because "the plan looks fine" — that's the planning
   agent's own bias
-
-## Integration
-
-**Required workflow skills:**
-- **superpowers:writing-plans** - Creates the plan this skill reviews
-- **superpowers:receiving-plan-refine** - Consumes this skill's findings file
