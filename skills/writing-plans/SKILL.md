@@ -19,6 +19,10 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 - (User preferences for plan location override this default)
 
 <!-- created by riso-tech -->
+**Plan structure:** The plan MUST follow the document skeleton in `skills/writing-plans/plan-template.md` — read it before writing. The structure is fixed; the depth scales to the feature's size.
+<!-- end created by riso-tech -->
+
+<!-- created by riso-tech -->
 **Human-readable HTML companion:**
 
 - After saving the markdown plan, also generate a standalone HTML version for human readers at the same path with a `.html` extension (e.g. `docs/superpowers/plans/YYYY-MM-DD-<feature-name>.html`).
@@ -45,6 +49,23 @@ Use `## US-N: [feature name]` headings, with that US's `### Task N` entries
 nested beneath. An optional refine pass (`requesting-plan-refine`) can audit
 this slicing after the plan is written, so getting the US boundaries roughly
 right here saves a round trip.
+
+<!-- created by riso-tech -->
+- US IDs MUST reuse the spec's User Story IDs — the plan's `US-1` implements
+  the spec's `US-1`; do not renumber. Every spec US gets a plan section.
+- Close every US section with a `**US-N Checkpoint:**` block: the exact
+  command or user action demonstrating that story end-to-end, with expected
+  observable output covering each GIVEN/WHEN/THEN acceptance criterion from
+  the spec (see `plan-template.md`).
+
+## Foundation Section (Optional)
+
+If some work blocks MORE THAN ONE user story (project scaffold, shared
+schema, shared data layer), put it in a `## Foundation` section before the
+first US, using the same task format. Setup needed by a single story stays
+folded into that story's tasks, per Task Right-Sizing. Omit the section
+entirely when nothing qualifies — it is not a setup dumping ground.
+<!-- end created by riso-tech -->
 
 ## File Structure
 
@@ -84,11 +105,31 @@ independently testable deliverable.
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
+**Spec:** `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
+
 **Goal:** [One sentence describing what this builds]
 
 **Architecture:** [2-3 sentences about approach]
 
 **Tech Stack:** [Key technologies/libraries]
+
+## Expected Outcome
+
+After completing this plan, the developer will have:
+
+### Working behavior
+
+- [One bullet per User Story — what a user can concretely do once it
+  ships. Prefix with the story ID: "US-1: users can …"]
+
+### Artifacts
+
+- [Key files/modules/APIs created or changed, and the role of each]
+
+### How to see it working
+
+- [Exact command or user flow + observable output demonstrating the whole
+  feature end-to-end — distinct from the per-US checkpoints]
 
 ## Global Constraints
 
@@ -104,6 +145,8 @@ include this section.]
 
 ````markdown
 ### Task N: [Component Name]
+
+**Depends on:** [Task M | Foundation | none]
 
 **Files:**
 - Create: `exact/path/to/file.py`
@@ -174,6 +217,12 @@ After writing the complete plan, look at the spec with fresh eyes and check the 
 **2. Placeholder scan:** Search your plan for red flags — any of the patterns from the "No Placeholders" section above. Fix them.
 
 **3. Type consistency:** Do the types, method signatures, and property names you used in later tasks match what you defined in earlier tasks? A function called `clearLayers()` in Task 3 but `clearFullLayers()` in Task 7 is a bug.
+
+<!-- created by riso-tech -->
+**4. Template check:** Does the plan follow `skills/writing-plans/plan-template.md`? `**Spec:**` line, Expected Outcome section, `**Depends on:**` on every task, a Checkpoint closing every US section.
+
+**5. Traceability check:** Every spec `US-n` has a matching plan `US-n` section; every US Checkpoint covers that story's GIVEN/WHEN/THEN acceptance criteria; every "Working behavior" bullet in Expected Outcome traces to a US.
+<!-- end created by riso-tech -->
 
 If you find issues, fix them inline. No need to re-review — just fix and move on. If you find a spec requirement with no task, add the task.
 

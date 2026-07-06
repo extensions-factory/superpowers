@@ -26,7 +26,7 @@ You MUST create a task for each of these items and complete them in order:
 3. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
 4. **Propose 2-3 approaches** — with trade-offs and your recommendation
 5. **Present design** — in sections scaled to their complexity, get user approval after each section
-6. **Write design doc** — save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`, generate the HTML companion, add the feature to the product roadmap (see Documentation), and commit all
+6. **Write design doc** — save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` following `skills/brainstorming/spec-template.md`, generate the HTML companion, add the feature to the product roadmap (see Documentation), and commit all
 7. **Spec self-review** — quick inline check for placeholders, contradictions, ambiguity, scope (see below)
 8. **User reviews written spec** — ask user to review the spec file before proceeding
 9. **Transition to implementation** — invoke writing-plans skill to create implementation plan
@@ -105,6 +105,9 @@ digraph brainstorming {
 
 - Write the validated design (spec) to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
   - (User preferences for spec location override this default)
+<!-- created by riso-tech -->
+- The spec MUST follow the structure in `skills/brainstorming/spec-template.md` — read it before writing. The structure is fixed; the depth scales to the project's complexity.
+<!-- end created by riso-tech -->
 - Use elements-of-style:writing-clearly-and-concisely skill if available
 - Commit the design document to git
 
@@ -129,6 +132,9 @@ After writing the spec document, look at it with fresh eyes:
 2. **Internal consistency:** Do any sections contradict each other? Does the architecture match the feature descriptions?
 3. **Scope check:** Is this focused enough for a single implementation plan, or does it need decomposition?
 4. **Ambiguity check:** Could any requirement be interpreted two different ways? If so, pick one and make it explicit.
+<!-- created by riso-tech -->
+5. **Template check:** Does the spec follow `skills/brainstorming/spec-template.md`? All "always" sections present, user stories numbered `US-n` with GIVEN/WHEN/THEN acceptance criteria, alternatives recorded, success criteria measurable.
+<!-- end created by riso-tech -->
 
 Fix any issues inline. No need to re-review — just fix and move on.
 

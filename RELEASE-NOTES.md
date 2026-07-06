@@ -1,5 +1,11 @@
 # Superpowers Release Notes
 
+## v6.4.2 (2026-07-06)
+
+### Planning Templates
+
+- **Specs and implementation plans now have canonical templates.** `brainstorming` and `writing-plans` point agents at fixed document skeletons, with traceable user-story IDs, acceptance-criteria checkpoints, and expected-outcome sections.
+
 ## v6.4.1 (2026-07-02)
 
 ### Plan Refinement
