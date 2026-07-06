@@ -1,5 +1,11 @@
 # Superpowers Release Notes
 
+## v6.4.4 (2026-07-06)
+
+### Pull Requests
+
+- **Finishing branches now writes structured PR bodies.** The `finishing-a-development-branch` PR path points agents at a reusable body template so summaries, delivered stories, design docs, and test evidence are captured before opening the PR.
+
 ## v6.4.3 (2026-07-06)
 
 ### Upstream Sync

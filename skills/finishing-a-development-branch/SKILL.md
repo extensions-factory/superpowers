@@ -125,6 +125,16 @@ git branch -d <feature-branch>
 git push -u origin <feature-branch>
 ```
 
+<!-- created by riso-tech -->
+Then create the PR with a body following `skills/finishing-a-development-branch/pr-body-template.md` — read it before writing. Fill every section from the spec, plan, and this session's actual test results; write the body to a temp file and create the PR:
+
+```bash
+gh pr create --base <base-branch> --title "<type>: <feature title>" --body-file <path-to-body-file>
+```
+
+Show the user the PR URL when done.
+<!-- end created by riso-tech -->
+
 **Do NOT clean up worktree** — user needs it alive to iterate on PR feedback.
 
 #### Option 3: Keep As-Is
