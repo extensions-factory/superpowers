@@ -1,5 +1,11 @@
 # Superpowers Release Notes
 
+## v6.4.3 (2026-07-06)
+
+### Upstream Sync
+
+- **Rebased the extension-factory release line onto upstream `main`.** This carries upstream Codex packaging fixes forward while preserving the planning-template release changes.
+
 ## v6.4.2 (2026-07-06)
 
 ### Planning Templates
