@@ -39,7 +39,7 @@ mkdir -p "$dir"
 printf '*\n' > "$dir/.gitignore"
 ```
 
-**3. Dispatch a subagent, filling the template at
+**3. Dispatch the review, filling the template at
 [plan-reviewer.md](plan-reviewer.md):**
 
 **Placeholders:**
@@ -47,6 +47,22 @@ printf '*\n' > "$dir/.gitignore"
 - `{SPEC_FILE}` - path to the spec, or "None — no spec was written for this
   plan" if absent
 - `{FINDINGS_FILE}` - `.superpowers/plan-refine/<plan-basename>-findings.md`
+
+<!-- created by riso-tech -->
+**Route through the registry.** If `~/.agents/routing.json` exists, resolve
+the `plan-reviewer` role via superpowers:delegating-to-workers instead of
+defaulting to an internal subagent. The plan's author is usually Claude, so
+this role is pinned to an external worker for a genuinely adversarial,
+cross-vendor read — an internal Claude subagent shares the author's blind
+spots. When it resolves to a bridge worker, follow that skill's
+bridge-dispatch protocol: dispatch `/codex:adversarial-review` (read-only by
+construction) with focus text naming `{PLAN_FILE}`, `{SPEC_FILE}`, and the
+instruction to write findings to `{FINDINGS_FILE}` in the plan-reviewer.md
+format. The findings-file path is the only interface `receiving-plan-refine`
+needs — it is unchanged. Without `routing.json`, dispatch an internal
+context-free subagent exactly as below.
+<!-- end created by riso-tech -->
+
 
 **4. Receive the result:** the subagent returns only the findings file path
 and a one-line summary — never paste findings text into your own context.
