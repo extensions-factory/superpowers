@@ -1,5 +1,16 @@
 # Superpowers Release Notes
 
+## v6.4.5 (2026-07-08)
+
+### Worker Routing
+
+- **SDLC dispatches can route to external workers with cross-vendor review.** A new `delegating-to-workers` skill reads a `~/.agents/routing.json` registry so implementer, reviewer, and researcher dispatches land on the right worker (internal Claude subagent or an external agent such as Codex), and the vendor that wrote the code never reviews it. When no registry is present, every role resolves to an internal subagent exactly as before — zero-config, no regression.
+- **`subagent-driven-development` consults the registry before choosing a model** and records `impl=`/`review=` routing columns (vendor/profile/job) in the progress ledger, so a cross-vendor run stays recoverable through compaction.
+- **`requesting-plan-refine` and `requesting-code-review` route their reviewers cross-vendor** through the registry, using the read-only `/codex:adversarial-review` and `/codex:review` commands on a bridge worker rather than an ad-hoc rescue prompt.
+- **Implementation plans classify each task's `Complexity:`** (`mechanical` / `integration` / `design`), which the orchestrator maps straight to the implementer tier instead of re-deriving it per dispatch.
+- **Bridge dispatch now passes `--write`.** The rescue sandbox defaults to read-only; without it a worker cannot write its report file and the job is blocked.
+- Removed the orphaned `writing-plans/plan-document-reviewer-prompt.md`, superseded by the plan-refine skills.
+
 ## v6.4.4 (2026-07-06)
 
 ### Pull Requests
