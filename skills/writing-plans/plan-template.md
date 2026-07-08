@@ -67,6 +67,8 @@ US-1. Every US in the spec must appear as a section here.]
 
 **Depends on:** [Task M | Foundation | none]
 
+**Complexity:** [mechanical | integration | design]
+
 **Files:**
 - Create: `exact/path/to/file.py`
 - Modify: `exact/path/to/existing.py:123-145`
@@ -138,6 +140,20 @@ acceptance criterion from the spec's US-1]
 
 - Every task carries a `**Depends on:**` line naming the tasks (or Foundation) that must complete first, or `none`.
 - Tasks with no dependency between them may be dispatched in any order or in parallel by the executing skill.
+
+**Complexity:**
+
+- Every task carries a `**Complexity:**` line — one of `mechanical`,
+  `integration`, or `design`. Classify by the task's implementation shape,
+  matching subagent-driven-development's Model Selection signals:
+  - `mechanical` — touches 1-2 files with a complete spec and given tests;
+    transcription plus testing.
+  - `integration` — multiple files with coordination or judgment, pattern
+    matching, or debugging.
+  - `design` — architecture decisions or broad codebase understanding.
+- The executing skill maps this line straight to the implementer tier /
+  worker (`implementer.mechanical` / `.integration` / `.design`), so classify
+  at write time rather than making the orchestrator re-derive it per task.
 
 **Expected Outcome vs Goal vs Checkpoints:** Goal is one sentence; Expected Outcome is the detailed picture of the finished state (behavior + artifacts + aggregate proof); US Checkpoints verify one story each. Don't collapse them into one.
 <!-- end created by riso-tech -->
