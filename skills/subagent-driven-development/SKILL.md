@@ -98,6 +98,19 @@ conflicts that only emerge from implementation.
 
 ## Model Selection
 
+<!-- created by riso-tech -->
+**Check the registry first.** If `~/.agents/routing.json` exists, the worker
+and model for every dispatch in this skill — implementer, task-reviewer,
+fixer, and the final whole-branch review — are resolved through
+superpowers:delegating-to-workers, not the heuristics below. The registry
+owns which vendor and tier each role lands on and enforces cross-vendor
+review (the vendor that wrote the code never reviews it). Map the task's
+complexity to the implementer subkey: `implementer.mechanical` /
+`implementer.integration` / `implementer.design` (or the task's
+`Complexity:` line). The signals below are how you classify complexity and
+the fallback when no registry is present.
+<!-- end created by riso-tech -->
+
 Use the least powerful model that can handle each role to conserve cost and increase speed.
 
 **Mechanical implementation tasks** (isolated functions, clear specs, 1-2 files): use a fast, cheap model. Most implementation tasks are mechanical when the plan is well-specified.
@@ -257,6 +270,15 @@ a ledger file, not only in todos.
 - When a task's review comes back clean, append one line to the ledger in
   the same message as your other bookkeeping:
   `Task N: complete (commits <base7>..<head7>, review clean)`.
+  <!-- created by riso-tech -->
+  When dispatches were routed through a worker registry
+  (superpowers:delegating-to-workers), extend the line with the routing
+  columns so the ledger is a cross-vendor recovery map:
+  `Task N: complete (commits <base7>..<head7>, review clean) impl=<vendor>/<profile>/<job> review=<vendor>/<profile>/<job>`.
+  A bridge job id lets you resume the exact worker thread after compaction;
+  `<profile>` and `<job>` are `-` for internal-subagent dispatches.
+  <!-- end created by riso-tech -->
+
 - The ledger is your recovery map: the commits it names exist in git even
   when your context no longer remembers creating them. After compaction,
   trust the ledger and `git log` over your own recollection.
