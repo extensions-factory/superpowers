@@ -1,0 +1,53 @@
+{
+  "$comment": "created by riso-tech — schema reference for ~/.agents/routing.json. Routing only; never put secrets here (those live in ~/.agents/profiles.json). Vendors under 'workers' are tried in declaration order when resolving cross-vendor rules. Role keys match the dispatch points listed in the delegating-to-workers skill.",
+  "version": 1,
+  "workers": {
+    "codex": { "dispatch": "codex-plugin-cc", "available": true },
+    "antigravity": { "dispatch": "agy-plugin-cc", "available": false },
+    "claude": { "dispatch": "internal-subagent", "available": true }
+  },
+  "tiers": {
+    "claude": { "cheap": "haiku", "standard": "sonnet", "max": "opus" },
+    "codex": { "cheap": "gpt-5.3-codex-spark", "standard": "gpt-5.4-mini", "max": null },
+    "antigravity": { "cheap": null, "standard": null, "max": null }
+  },
+  "roles": {
+    "researcher": {
+      "worker": "claude",
+      "tier": "standard"
+    },
+    "plan-reviewer": {
+      "worker": "codex",
+      "command": "adversarial-review",
+      "fallback": ["claude:max"]
+    },
+    "implementer.mechanical": {
+      "worker": "codex",
+      "tier": "cheap",
+      "fallback": ["claude:cheap"]
+    },
+    "implementer.integration": {
+      "worker": "codex",
+      "tier": "standard",
+      "effort": "high",
+      "fallback": ["claude:standard"]
+    },
+    "implementer.design": {
+      "worker": "claude",
+      "tier": "max"
+    },
+    "fixer": {
+      "worker": "codex",
+      "tier": "cheap",
+      "fallback": ["claude:cheap"]
+    },
+    "task-reviewer": {
+      "rule": "cross-vendor",
+      "minTier": "standard"
+    },
+    "code-reviewer": {
+      "rule": "cross-vendor",
+      "tier": "max"
+    }
+  }
+}
