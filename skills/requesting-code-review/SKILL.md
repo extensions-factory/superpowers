@@ -39,6 +39,23 @@ Dispatch a `general-purpose` subagent, filling the template at [code-reviewer.md
 - `{BASE_SHA}` - Starting commit
 - `{HEAD_SHA}` - Ending commit
 
+<!-- created by riso-tech -->
+**Route through the registry.** If `~/.agents/routing.json` exists, resolve
+the `code-reviewer` role via superpowers:delegating-to-workers rather than
+defaulting to an internal subagent. This role is cross-vendor: identify the
+vendor that wrote most of the diff (from the progress ledger, or yourself if
+you wrote it) and the registry hands the review to a *different* available
+vendor — the author never reviews their own code. When it resolves to a
+bridge worker, follow that skill's bridge-dispatch protocol and use the
+read-only review command (`/codex:review` for a whole-branch/base diff,
+`/codex:adversarial-review` when the review must challenge design) with the
+code-reviewer.md content in the focus text — not a rescue prompt file. For a
+high-risk diff you may dual-review: dispatch two different vendors and merge
+their findings yourself as orchestrator. Without `routing.json`, dispatch the
+internal `general-purpose` subagent as above.
+<!-- end created by riso-tech -->
+
+
 **3. Act on feedback:**
 - Fix Critical issues immediately
 - Fix Important issues before proceeding
