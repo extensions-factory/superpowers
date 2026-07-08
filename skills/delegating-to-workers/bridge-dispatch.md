@@ -30,7 +30,14 @@ printf '*\n' > "$dir/.gitignore"
 
 | Role | How |
 |---|---|
-| implementer, fixer, task-reviewer, researcher | Invoke the `codex:codex-rescue` subagent (Agent tool, `subagent_type: "codex:codex-rescue"`) with flags + task text: `--background --fresh [--model <resolved>] [--effort <resolved>] [--profile <only if registry pins one>] Read <prompt-file> and follow it exactly. Write your report to the path it specifies.` |
+| implementer, fixer, task-reviewer, researcher | Invoke the `codex:codex-rescue` subagent (Agent tool, `subagent_type: "codex:codex-rescue"`) with flags + task text: `--background --fresh --write [--model <resolved>] [--effort <resolved>] [--profile <only if registry pins one>] Read <prompt-file> and follow it exactly. Write your report to the path it specifies.` |
+
+`--write` is **required for every rescue dispatch**, reviewers and
+researchers included. The rescue sandbox defaults to `read-only`; without
+`--write` the worker cannot create its report file and the job returns
+BLOCKED-by-environment (verified live 2026-07-08). Read-only roles still need
+write access to the `.superpowers/dispatch/` workspace for the report — the
+worker contract already forbids touching anything else.
 | plan-reviewer | `/codex:adversarial-review --background` with focus text naming the plan file, the spec file, and the report-file contract |
 | code-reviewer (whole branch) | `/codex:review --base <merge-base> --background`, or adversarial-review when the review must challenge design, with the report-file contract in the focus text |
 
