@@ -2,6 +2,10 @@
 
 Skills speak in actions ("dispatch a subagent", "create a todo", "read a file"). On the Antigravity CLI (`agy`) these resolve to the tools below.
 
+## Role Mode Default
+
+A session opened directly on Antigravity CLI — not dispatched with a `ROLE:` header — defaults to `subagent` per `using-superpowers`'s Role Mode. Pass `ROLE: orchestrator` explicitly if you are working here directly rather than through a dispatch.
+
 | Action skills request | Antigravity CLI equivalent |
 |----------------------|----------------------|
 | Dispatch a subagent (`Subagent (general-purpose):` template) | `invoke_subagent` with a built-in `TypeName` — `self` for full-capability work, `research` for read-only (see [Subagent support](#subagent-support)) |

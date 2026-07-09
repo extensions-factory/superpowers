@@ -1,3 +1,7 @@
+## Role Mode Default
+
+A session opened directly on Codex CLI — not dispatched with a `ROLE:` header — defaults to `subagent` per `using-superpowers`'s Role Mode. Pass `ROLE: orchestrator` explicitly if you are working here directly rather than through a dispatch.
+
 ## Subagent dispatch requires multi-agent support
 
 Add to your Codex config (`~/.codex/config.toml`):
