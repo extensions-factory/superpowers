@@ -186,3 +186,19 @@ the Diversity Routing rule above; the file mechanism is unchanged.
 Codex-side counter-review runs as a background job: dispatch with
 `--background`, poll with `/codex:status`, retrieve with `/codex:result`
 (which also returns the Codex session ID for `codex resume` if needed).
+
+## Error Handling
+
+- Codex unavailable for an **execution** role → fall back to Claude at the
+  equivalent tier (see Offload-First Routing), state the substitution.
+- Codex unavailable for a **judgment** role → same fallback, additionally
+  state that provider diversity was not honored.
+- Antigravity selected by routing order but no spawn mechanism exists →
+  automatically skip to the next provider; expected, not an error.
+- A subagent reports `BLOCKED` → apply the escalation ladder from
+  `subagent-driven-development`: more context, then a stronger model, then
+  decompose the task, then escalate to your human partner. Never
+  re-dispatch the same task unchanged.
+- No provider available at all for a required dispatch → this is the
+  second escape hatch in `using-superpowers`'s SDLC Dispatch rule; work
+  inline and state why.
