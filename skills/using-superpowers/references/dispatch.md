@@ -136,3 +136,30 @@ and state the substitution before dispatching.
 at once (see `dispatching-parallel-agents`), each gets independent
 provider selection per this order — they do not coordinate with each
 other, since no nesting means no cross-subagent spawning either.
+
+## Diversity Routing (Judgment Roles)
+
+**Judgment roles:** `Plan Reviewer`, `Code Reviewer`, `Task Reviewer`,
+`Final Reviewer`.
+
+**Rule:** the reviewer's provider must differ from the artifact's author's
+provider. Track the author provider from the dispatch that produced the
+artifact (e.g. "this diff came from a Codex Implementer dispatch") — that's
+already known at review time, no new bookkeeping required.
+
+- Artifact authored by the orchestrator (Claude) — a plan or spec — review
+  it on Codex by default (`/codex:rescue` with the reviewer template, or
+  `/codex:review`/`/codex:adversarial-review` for code diffs).
+- Artifact authored by a Codex execution subagent — implementation code —
+  review it on a Claude subagent by default.
+- If only one provider is available, proceed with a same-provider
+  reviewer, but state explicitly that provider diversity was not honored
+  and why.
+
+**Final Reviewer exception:** the whole-branch Final Reviewer is always
+Claude, regardless of who authored the branch — this is the one place the
+diversity rule is deliberately overridden, per standing user decision.
+When Claude authored most of the branch, run
+`/codex:adversarial-review --base <ref>` as an *additional* pre-final gate
+before dispatching the Claude Final Reviewer — this is additive, not a
+substitute for the Claude final review.
