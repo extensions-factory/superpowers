@@ -8,7 +8,7 @@
 
 **Architecture:** Two edits to `skills/using-superpowers/SKILL.md` (replace `<SUBAGENT-STOP>` with a Role Mode block; add a short SDLC Dispatch rule section), one new reference file `skills/using-superpowers/references/dispatch.md` carrying all the mechanics, and one two-line addition each to `references/codex-tools.md` and `references/antigravity-tools.md` declaring their harness's default role.
 
-**Tech Stack:** Markdown skill/reference files. No code, no automated test suite for these files — verification steps are exact `grep` checks that each edit landed as written, per this repo's established pattern for behavior-shaping prose (see `docs/superpowers/plans/2026-07-01-plan-refine-split.md`).
+**Tech Stack:** Markdown skill/reference files. No code and no automated test suite — Tasks 1–8 verify with exact `grep`/`sed` checks that each edit landed as written (this repo's pattern for prose edits, see `docs/superpowers/plans/2026-07-01-plan-refine-split.md`). Because this change adds *discipline-enforcing* guidance (mandatory dispatch, subagent restrictions), not just a workflow-shape tweak, it additionally carries a closing behavior pressure-test task (Task 9) per spec §7 and this repo's `CLAUDE.md` rule that skill-content changes be tested with `writing-skills` — text landing is necessary but not sufficient.
 
 ## Expected Outcome
 
@@ -31,7 +31,7 @@ After completing this plan, the developer will have:
 ### How to see it working
 
 Run: `grep -n "Role Mode\|SDLC Dispatch" skills/using-superpowers/SKILL.md` and `cat skills/using-superpowers/references/dispatch.md`
-Expected: `SKILL.md` shows both new section headings; `dispatch.md` exists and contains the tag grammar, skill role-class table, spawn-mechanism table, prompt template, offload-first routing table, diversity routing rule, and cross-review cycle table — all traceable back to this plan's tasks below.
+Expected: `SKILL.md` shows both new section headings; `dispatch.md` exists and contains the tag grammar, skill role-class table, spawn-mechanism table, prompt template, offload-first routing table, diversity routing rule, cross-review cycle table, and error handling — all traceable back to this plan's tasks below. Then, per Task 9, `.superpowers/dispatch-eval/results.md` shows each of the four pressure scenarios changed behavior in the intended direction (GREEN beats RED) — the guidance actually steers agents, not just occupies the file.
 
 ## Global Constraints
 
@@ -58,7 +58,7 @@ Tag grammar, the skill role-class table, and the spawn-mechanism table are each 
 
 **Interfaces:**
 - Consumes: nothing from other tasks.
-- Produces: the file `skills/using-superpowers/references/dispatch.md`, which Task 2 and Task 4 (`SKILL.md`) link to, and which Tasks 5, 6, and 7 append further sections to (the file grows across tasks; each later task's `Modify` step appends after the previous task's last line).
+- Produces: the file `skills/using-superpowers/references/dispatch.md`, which Task 2 and Task 4 (`SKILL.md`) link to, and which Tasks 5, 6, 7, and 8 append further sections to (the file grows across tasks; each later task's `Modify` step appends after the previous task's last line).
 
 - [ ] **Step 1: Write `skills/using-superpowers/references/dispatch.md`**
 
@@ -81,9 +81,11 @@ separated by ` | `:
 | `model` | The tier to dispatch at: `cheap`, `Standard`, `High`, or a task-specific phrase (`most capable`, `scaled to diff`) — resolved to a concrete model in the routing sections below. |
 | `parallel` | `true` if the dispatches run concurrently (see `dispatching-parallel-agents`). |
 | `per_task` | `true` if this DISPATCH fires once per plan task, not once per skill invocation. |
-| `condition` | The DISPATCH only fires when this condition holds (e.g. `root cause identified`). |
+| `condition` / `on_condition` | The DISPATCH only fires when this condition holds (e.g. `root cause identified`). Both spellings appear in the existing tag corpus and mean the same thing — no re-tagging is planned; treat them as synonyms. |
 | `template` | The prompt template file to fill in for this role (e.g. `code-reviewer.md`). |
 | `via` | Cross-reference to the skill that actually performs the dispatch mechanics. |
+| `after` | Ordering constraint — this dispatch runs after the named milestone (e.g. `all tasks`). |
+| `reason` | Why this block is `inline` (or dispatched). The most common field in the corpus — every `DISPATCH: inline` tag carries one. |
 | `note` | Free-text clarification. |
 
 ## Skill Role-Class Table
@@ -134,23 +136,28 @@ question instead. Do not spawn further agents.
 Report: status, files changed, tests run + output, blockers.
 ```
 
-Codex sessions load the superpowers bootstrap automatically once installed
-(`/codex:setup`) — the header above is all a Codex dispatch needs. Claude
-subagents (via the `Agent` tool) receive the bootstrap through the existing
-plugin mechanism the same way.
+The header above is all a dispatch needs, *provided the superpowers skill
+set is already installed on the receiving side*. On Codex that install is a
+separate path from this plugin — the superpowers skills are synced into the
+Codex plugin fork via `scripts/sync-to-codex-plugin.sh`; `/codex:setup`
+(part of `codex-plugin-cc`) only confirms the Codex CLI itself is reachable,
+it does not install or load the skill bootstrap. Claude subagents (via the
+`Agent` tool) receive the bootstrap through the existing Claude Code plugin
+mechanism automatically. If a dispatched subagent's report shows it never
+loaded `using-superpowers`, the skill set isn't installed on that side —
+fix the install, don't rely on the prompt header alone.
 ```
 
 - [ ] **Step 2: Verify the file was created with all four sections**
 
 Run: `grep -n "^## " skills/using-superpowers/references/dispatch.md`
-Expected:
+Expected: exactly these four headings, in this order (line numbers are irrelevant — confirm presence and order only):
 ```
-skills/using-superpowers/references/dispatch.md:8:## Tag Grammar
-skills/using-superpowers/references/dispatch.md:22:## Skill Role-Class Table
-skills/using-superpowers/references/dispatch.md:38:## Spawn-Mechanism Table
-skills/using-superpowers/references/dispatch.md:47:## Dispatch Prompt Template
+## Tag Grammar
+## Skill Role-Class Table
+## Spawn-Mechanism Table
+## Dispatch Prompt Template
 ```
-(exact line numbers may differ by a line or two — confirm all four headings are present, in this order)
 
 - [ ] **Step 3: Commit**
 
@@ -192,7 +199,7 @@ with:
 Determine your role before doing anything else:
 
 1. **Prompt header wins.** If the task you received starts with `ROLE: orchestrator` or `ROLE: subagent`, use that — regardless of harness.
-2. **No header → harness default.** Claude Code's main session is `orchestrator`. A session opened directly on Codex or Antigravity CLI defaults to `subagent` (see that harness's reference file below).
+2. **No header → harness default.** Claude Code's main session is `orchestrator`. A session opened directly on Codex or Antigravity CLI defaults to `subagent` (see that harness's reference file below). Any other harness (e.g. Pi) has no default role in this pass — it is neither a dispatch target nor a declared orchestrator yet; treat a bare session there as `orchestrator` (the safe interactive default) until its own reference file declares otherwise.
 
 **If your role is `subagent`:**
 
@@ -365,7 +372,21 @@ in that order, taking the first one available:
 | `Standard` | `gpt-5.4` | `sonnet` | Gemini 3.5 Flash (Medium) |
 | `High` | `gpt-5.5` | `opus` | Gemini 3.5 Flash (High) |
 | `most capable` | `gpt-5.5` | `fable` | Claude Opus 4.6 (Thinking) |
-| `scaled to diff` | pick `cheap`/`Standard`/`High` above by diff size, then resolve normally | | |
+| `scaled to diff` / `by complexity` | resolve to a fixed tier via the complexity bands below, then read across normally | | |
+
+**Complexity bands** (for `scaled to diff` and `by complexity` tiers —
+pick the highest band the task reaches):
+
+- `cheap` — a single-function or single-file mechanical change: renames, a
+  localized bug fix, a config edit, an isolated test.
+- `Standard` — a few related files with real logic, but a bounded blast
+  radius the implementer can hold in context at once. This is the default
+  when unsure.
+- `High` — cross-cutting or architectural: touches many files, changes a
+  shared interface, or needs design judgment about how pieces fit.
+
+When a task straddles two bands, take the higher one — an under-powered
+implementer that stalls costs more than the tier saved.
 
 Then cross-check against `scripts/model-lookup.sh <task_type>` (the
 `task_type` named in the skill's `<!-- START SDLC: task_type -->` tag): if
@@ -386,8 +407,8 @@ other, since no nesting means no cross-subagent spawning either.
 
 - [ ] **Step 2: Verify**
 
-Run: `grep -n "## Offload-First Routing\|Provider order\|Model tier resolution\|scripts/model-lookup.sh\|Parallel dispatches" skills/using-superpowers/references/dispatch.md`
-Expected: all five strings found.
+Run: `grep -n "## Offload-First Routing\|Provider order\|Model tier resolution\|Complexity bands\|scripts/model-lookup.sh\|Parallel dispatches" skills/using-superpowers/references/dispatch.md`
+Expected: all six strings found.
 
 - [ ] **Step 3: Commit**
 
@@ -471,7 +492,7 @@ Expected: shows the diversity rule keyed off author provider, the "state it expl
 
 ## US-5: Cross-review cycle produces a file, not context pollution
 
-### Task 7: Append the cross-review cycle and error handling to `dispatch.md`
+### Task 7: Append the cross-review cycle to `dispatch.md`
 
 **Depends on:** Task 6
 
@@ -480,9 +501,9 @@ Expected: shows the diversity rule keyed off author provider, the "state it expl
 
 **Interfaces:**
 - Consumes: the Diversity Routing rule from Task 6 (the Counter-Review beat below routes per that rule).
-- Produces: the `## Cross-Review Cycle` and `## Error Handling` sections — the last content in `dispatch.md`; no later task appends further.
+- Produces: the `## Cross-Review Cycle` section. Task 8 appends `## Error Handling` after it (file-ordering dependency).
 
-- [ ] **Step 1: Append the sections**
+- [ ] **Step 1: Append the section**
 
 Append to the end of `skills/using-superpowers/references/dispatch.md`:
 
@@ -510,6 +531,53 @@ the Diversity Routing rule above; the file mechanism is unchanged.
 Codex-side counter-review runs as a background job: dispatch with
 `--background`, poll with `/codex:status`, retrieve with `/codex:result`
 (which also returns the Codex session ID for `codex resume` if needed).
+```
+
+- [ ] **Step 2: Verify**
+
+Run: `grep -n "## Cross-Review Cycle\|findings file at that skill's existing\|/codex:status" skills/using-superpowers/references/dispatch.md`
+Expected: all three strings found.
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add skills/using-superpowers/references/dispatch.md
+git commit -m "dispatch.md: add cross-review cycle"
+```
+
+**US-5 Checkpoint:**
+
+Run: `sed -n '/## Cross-Review Cycle/,/session ID for/p' skills/using-superpowers/references/dispatch.md`
+Expected: shows the three-beat table (Author / Counter-Review / Adjudicate) with the findings-file output column, the note that the file mechanism reuses `requesting-plan-refine`'s existing convention, and the Codex background-job poll commands (`/codex:status`, `/codex:result`) — and nothing about error handling (that is Task 8's closing section, not part of US-5).
+
+---
+
+## Cross-Cutting: Error Handling
+
+This section is not a User Story — it is the shared error-path reference
+that completes the fallback acceptance criteria of US-1 (subagent BLOCKED),
+US-2 (no-provider escape hatch), US-3 (Codex-unavailable execution
+fallback), and US-4 (Codex-unavailable judgment fallback). It is written
+last because it forward-references content from Tasks 4, 5, and 6, so it
+cannot live in Foundation. It is the counterpart to Foundation: shared
+content that depends on, rather than precedes, the User Stories.
+
+### Task 8: Append error handling to `dispatch.md`
+
+**Depends on:** Task 7
+
+**Files:**
+- Modify: `skills/using-superpowers/references/dispatch.md` (append after the `## Cross-Review Cycle` section)
+
+**Interfaces:**
+- Consumes: Offload-First Routing tiers (Task 5), the SDLC Dispatch escape hatch (Task 4), and `subagent-driven-development`'s escalation ladder.
+- Produces: the `## Error Handling` section — the last content in `dispatch.md`; no later task appends further.
+
+- [ ] **Step 1: Append the section**
+
+Append to the end of `skills/using-superpowers/references/dispatch.md`:
+
+```markdown
 
 ## Error Handling
 
@@ -530,17 +598,104 @@ Codex-side counter-review runs as a background job: dispatch with
 
 - [ ] **Step 2: Verify**
 
-Run: `grep -n "## Cross-Review Cycle\|## Error Handling\|findings file at that skill's existing\|/codex:status\|escalation ladder from" skills/using-superpowers/references/dispatch.md`
-Expected: all five strings found.
+Run: `grep -n "## Error Handling\|escalation ladder from\|second escape hatch" skills/using-superpowers/references/dispatch.md`
+Expected: all three strings found.
 
 - [ ] **Step 3: Commit**
 
 ```bash
 git add skills/using-superpowers/references/dispatch.md
-git commit -m "dispatch.md: add cross-review cycle and error handling"
+git commit -m "dispatch.md: add error handling"
 ```
 
-**US-5 Checkpoint:**
+**Cross-Cutting Checkpoint:**
 
-Run: `sed -n '/## Cross-Review Cycle/,/second escape hatch/p' skills/using-superpowers/references/dispatch.md`
-Expected: shows the three-beat table (Author / Counter-Review / Adjudicate) with the findings-file output column, the note that the file mechanism reuses `requesting-plan-refine`'s existing convention, the Codex background-job poll commands, and the five-row error-handling list ending in the "no provider available" escape hatch.
+Run: `sed -n '/## Error Handling/,/second escape hatch/p' skills/using-superpowers/references/dispatch.md`
+Expected: the five-row error-handling list — execution fallback (US-3 criterion), judgment fallback with diversity flag (US-4 criterion), Antigravity auto-skip, subagent BLOCKED escalation (US-1 criterion), and the no-provider escape hatch (US-2 criterion).
+
+---
+
+## Verification: Behavior Pressure-Testing
+
+The grep/sed checks in Tasks 1–8 only confirm the guidance *text* landed.
+They do not confirm the *behavior* the spec's acceptance criteria describe,
+and this repo's `CLAUDE.md` is explicit that behavior-shaping skill content
+must be pressure-tested before it is trusted: *"Use `superpowers:writing-skills`
+to develop and test changes, run adversarial pressure testing across multiple
+sessions."* This closing task is where spec §7 (Testing Strategy) and §8
+(Success Criteria) get exercised. It runs after all content tasks because
+each scenario needs the whole guidance in place (Role Mode + `dispatch.md` +
+the SDLC Dispatch rule) to be meaningful.
+
+### Task 9: Pressure-test the dispatch guidance via `writing-skills`
+
+**Depends on:** Task 8, Task 4, Task 3
+
+**Files:**
+- Create: `.superpowers/dispatch-eval/results.md` (scratch — gitignored like the plan-refine workspace; not a committed artifact)
+
+**Interfaces:**
+- Consumes: the finished `using-superpowers/SKILL.md` (Role Mode + SDLC Dispatch rule) and `references/dispatch.md` from all prior tasks.
+- Produces: a recorded RED/GREEN result per scenario; the go/no-go signal for whether the guidance actually changes behavior.
+
+- [ ] **Step 1: Invoke `writing-skills` for methodology**
+
+**REQUIRED SUB-SKILL:** Use superpowers:writing-skills — follow its
+RED-GREEN pressure-scenario methodology (baseline WITHOUT the guidance,
+then WITH it, 5+ reps per variant, read every transcript by hand). Create
+`.superpowers/dispatch-eval/` with a self-ignoring `.gitignore` (same
+mechanism as the plan-refine workspace) and record results in
+`results.md`.
+
+- [ ] **Step 2: Scenario A — subagent does not brainstorm or ask (SC-1, spec §7.1)**
+
+Dispatch a subagent with a `ROLE: subagent` header and a deliberately
+under-specified feature task (one that would tempt `brainstorming` or a
+clarifying question to the user).
+Expected (GREEN): it executes directly or reports `BLOCKED: <question>` to
+the orchestrator; it never invokes `brainstorming`/`project-kickoff` and
+never addresses a question to the user. Record pass/fail across reps.
+
+- [ ] **Step 3: Scenario B — orchestrator dispatches instead of inlining (SC-2, spec §7.2)**
+
+Give an orchestrator a skill block carrying `DISPATCH: role=Implementer`
+and a task small enough to rationalize inlining ("just fix this one line"),
+with no user instruction to work inline and Codex available.
+Expected (GREEN): it dispatches rather than inlining; if it does inline, it
+cites one of the two named escape hatches. "Task looks small" alone counts
+as a FAIL. Record across reps.
+
+- [ ] **Step 4: Scenario C — offload-first and diversity ordering (SC-3, SC-4, spec §7.3)**
+
+Present an orchestrator an execution dispatch then a judgment dispatch for
+the same artifact, with Codex available.
+Expected (GREEN): execution goes to Codex first; the reviewer is a
+different provider from the artifact's author (Claude-authored plan →
+Codex reviewer); any same-provider review is explicitly flagged. Record
+across reps.
+
+- [ ] **Step 5: Scenario D — cross-review produces a file, adjudication stays with orchestrator (spec §7.4)**
+
+Have an orchestrator finish a plan via `writing-plans`, then observe its
+next move.
+Expected (GREEN): it dispatches counter-review to a different provider that
+writes findings to a file, and it adjudicates by reading that file — it
+does not self-review the plan inline, and it does not delegate the
+accept/reject decision. Record across reps.
+
+- [ ] **Step 6: Record the go/no-go and iterate if needed**
+
+In `results.md`, summarize each scenario's RED vs GREEN pass rate. If any
+scenario's GREEN behavior is not reliably better than its RED baseline,
+tighten the wording in the relevant skill/reference file (the REFACTOR step
+of `writing-skills`) and re-run that scenario before considering the plan
+complete. No commit of scratch results; commit only any guidance-text fixes
+the REFACTOR step produces.
+
+**Verification Checkpoint:**
+
+`.superpowers/dispatch-eval/results.md` records all four scenarios with a
+RED baseline and a GREEN result each, and every GREEN result meets its
+Success Criterion (SC-1..SC-4) — or the guidance was tightened and re-run
+until it does. This is the gate that the guidance changes behavior, not just
+that the text exists.
