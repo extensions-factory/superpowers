@@ -69,6 +69,19 @@ If your harness appears here, read its reference file for special instructions:
 - Pi: `references/pi-tools.md`
 - Antigravity: `references/antigravity-tools.md`
 
+## SDLC Dispatch
+
+When a skill block you are following is tagged `<!-- DISPATCH: role=... -->`, you MUST dispatch a subagent for that role — see `references/dispatch.md` for provider selection, spawn commands, and the prompt template. `DISPATCH: inline` means the block is deliberately scoped to stay in your own context; no dispatch decision applies there.
+
+Skip dispatch and work inline ONLY when:
+
+1. Your human partner has explicitly told you to work inline for this task, or
+2. No provider is available for the role (checked against the spawn-mechanism table in `references/dispatch.md`).
+
+State which of these applies before working inline. "This task looks small" is not a third reason — dispatch the same way you would for a large one.
+
+This section applies to you only when Role Mode (above) resolved to `orchestrator`. A subagent does not dispatch further (no nesting) and ignores `DISPATCH` tags entirely.
+
 ## User Instructions
 
 User instructions (CLAUDE.md, AGENTS.md, GEMINI.md, etc, direct requests) take precedence over skills, which in turn override default behavior. Only skip skill workflows or instructions when your human partner has explicitly told you to.
