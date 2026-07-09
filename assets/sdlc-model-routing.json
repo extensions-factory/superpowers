@@ -1,0 +1,1055 @@
+{
+  "schema_version": "1.0",
+  "last_researched_at": "2026-07-09",
+  "model_name_policy": "Every recommended_models[].model value must not be normalized before passing to --model.",
+  "selection_rules": [
+    "Use the first recommended model unless cost, latency, privacy, or provider availability pushes you to another listed model.",
+    "Use High, Thinking, fable, opus, or gpt-5.5 for ambiguous, high-risk, multi-file, long-context, security, or architecture work.",
+    "Use Low, mini, haiku, or GPT-OSS 120B (Medium) for bounded, repetitive, low-risk, or private/offline work.",
+    "Use provider diversity for review: ask a different provider than the one that produced the first draft."
+  ],
+  "providers": {
+    "Codex": [
+      "gpt-5.5",
+      "gpt-5.4",
+      "gpt-5.4-mini"
+    ],
+    "Antigravity CLI": [
+      "Gemini 3.5 Flash (Medium)",
+      "Gemini 3.5 Flash (High)",
+      "Gemini 3.5 Flash (Low)",
+      "Gemini 3.1 Pro (High)",
+      "Claude Sonnet 4.6 (Thinking)",
+      "Claude Opus 4.6 (Thinking)",
+      "GPT-OSS 120B (Medium)"
+    ],
+    "Claude Code": [
+      "fable",
+      "opus",
+      "sonnet",
+      "haiku"
+    ]
+  },
+  "model_catalog": {
+    "codex.gpt-5.5": {
+      "provider": "Codex",
+      "model": "gpt-5.5",
+      "role": "OpenAI flagship for complex reasoning, coding, tools, and long-context professional work.",
+      "best_for": [
+        "architecture_design",
+        "code_review_quality",
+        "debugging_root_cause",
+        "discovery_research",
+        "monitoring_incident_ops",
+        "retrospective_process_improvement",
+        "security_review",
+        "sprint_planning",
+        "ui_ux_prototyping"
+      ]
+    },
+    "codex.gpt-5.4": {
+      "provider": "Codex",
+      "model": "gpt-5.4",
+      "role": "Strong general coding and professional-work model with good cost/performance.",
+      "best_for": [
+        "backlog_refinement_prioritization",
+        "documentation_knowledge_transfer",
+        "implementation_coding",
+        "release_deployment",
+        "requirements_user_stories",
+        "testing_qa",
+        "ui_ux_prototyping",
+        "workspace_setup"
+      ]
+    },
+    "codex.gpt-5.4-mini": {
+      "provider": "Codex",
+      "model": "gpt-5.4-mini",
+      "role": "Fast, lower-cost option for simpler coding, test, doc, and subagent-style tasks.",
+      "best_for": [
+        "backlog_refinement_prioritization",
+        "implementation_coding",
+        "testing_qa",
+        "workspace_setup"
+      ]
+    },
+    "antigravity.gemini-3.5-flash-medium": {
+      "provider": "Antigravity CLI",
+      "model": "Gemini 3.5 Flash (Medium)",
+      "role": "Default balanced Gemini option for agentic coding, iterative implementation, and most tasks.",
+      "best_for": [
+        "backlog_refinement_prioritization",
+        "discovery_research",
+        "implementation_coding",
+        "release_deployment",
+        "testing_qa",
+        "workspace_setup"
+      ]
+    },
+    "antigravity.gemini-3.5-flash-high": {
+      "provider": "Antigravity CLI",
+      "model": "Gemini 3.5 Flash (High)",
+      "role": "Higher-reasoning Gemini option for hard coding, planning, tool use, and debugging.",
+      "best_for": [
+        "code_review_quality",
+        "debugging_root_cause",
+        "monitoring_incident_ops",
+        "sprint_planning",
+        "ui_ux_prototyping"
+      ]
+    },
+    "antigravity.gemini-3.5-flash-low": {
+      "provider": "Antigravity CLI",
+      "model": "Gemini 3.5 Flash (Low)",
+      "role": "Fast Gemini option for simple analysis, writing, and low-risk code loops.",
+      "best_for": [
+        "documentation_knowledge_transfer",
+        "requirements_user_stories"
+      ]
+    },
+    "antigravity.gemini-3.1-pro-high": {
+      "provider": "Antigravity CLI",
+      "model": "Gemini 3.1 Pro (High)",
+      "role": "Deep-reasoning, multimodal, long-context option for broad datasets and complex tradeoffs.",
+      "best_for": [
+        "architecture_design",
+        "discovery_research",
+        "monitoring_incident_ops",
+        "retrospective_process_improvement",
+        "security_review"
+      ]
+    },
+    "antigravity.claude-sonnet-4.6-thinking": {
+      "provider": "Antigravity CLI",
+      "model": "Claude Sonnet 4.6 (Thinking)",
+      "role": "Balanced high-quality Claude option for coding, agent planning, knowledge work, and design.",
+      "best_for": [
+        "backlog_refinement_prioritization",
+        "code_review_quality",
+        "documentation_knowledge_transfer",
+        "implementation_coding",
+        "release_deployment",
+        "requirements_user_stories",
+        "retrospective_process_improvement",
+        "ui_ux_prototyping"
+      ]
+    },
+    "antigravity.claude-opus-4.6-thinking": {
+      "provider": "Antigravity CLI",
+      "model": "Claude Opus 4.6 (Thinking)",
+      "role": "Careful, long-context Claude option for hard planning, debugging, code review, and large codebases.",
+      "best_for": [
+        "architecture_design",
+        "code_review_quality",
+        "debugging_root_cause",
+        "discovery_research",
+        "monitoring_incident_ops",
+        "security_review",
+        "sprint_planning"
+      ]
+    },
+    "antigravity.gpt-oss-120b-medium": {
+      "provider": "Antigravity CLI",
+      "model": "GPT-OSS 120B (Medium)",
+      "role": "Open-weight high-reasoning option for private, local, offline, or vendor-diverse work.",
+      "best_for": [
+        "security_review",
+        "testing_qa"
+      ]
+    },
+    "claude-code.fable": {
+      "provider": "Claude Code",
+      "model": "fable",
+      "role": "Top Claude Code alias for long-running agentic work, hard planning, and expert review.",
+      "best_for": [
+        "architecture_design",
+        "code_review_quality",
+        "discovery_research",
+        "retrospective_process_improvement",
+        "security_review",
+        "sprint_planning"
+      ]
+    },
+    "claude-code.opus": {
+      "provider": "Claude Code",
+      "model": "opus",
+      "role": "Claude Code alias for complex agentic coding, large refactors, root-cause analysis, and review.",
+      "best_for": [
+        "architecture_design",
+        "debugging_root_cause",
+        "monitoring_incident_ops"
+      ]
+    },
+    "claude-code.sonnet": {
+      "provider": "Claude Code",
+      "model": "sonnet",
+      "role": "Default Claude Code alias for everyday coding, planning, review, docs, and tests.",
+      "best_for": [
+        "backlog_refinement_prioritization",
+        "debugging_root_cause",
+        "documentation_knowledge_transfer",
+        "implementation_coding",
+        "release_deployment",
+        "requirements_user_stories",
+        "retrospective_process_improvement",
+        "sprint_planning",
+        "testing_qa",
+        "ui_ux_prototyping",
+        "workspace_setup"
+      ]
+    },
+    "claude-code.haiku": {
+      "provider": "Claude Code",
+      "model": "haiku",
+      "role": "Fast Claude Code alias for simple, bounded, low-risk writing and coding tasks.",
+      "best_for": [
+        "documentation_knowledge_transfer",
+        "release_deployment",
+        "requirements_user_stories",
+        "workspace_setup"
+      ]
+    }
+  },
+  "task_types": {
+    "discovery_research": {
+      "sdlc_stage": "discovery",
+      "agile_context": "Product goal discovery, domain research, user/problem exploration, market and technical feasibility.",
+      "task_aliases": [
+        "research",
+        "product_discovery",
+        "domain_research",
+        "feasibility"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Claude Code",
+          "model": "fable",
+          "why": "Best when the research may turn into long-running agentic planning."
+        },
+        {
+          "rank": 2,
+          "provider": "Codex",
+          "model": "gpt-5.5",
+          "why": "Strong for complex synthesis and professional reasoning."
+        },
+        {
+          "rank": 3,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.1 Pro (High)",
+          "why": "Good for broad-context, multimodal, and dataset-heavy research."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Claude Opus 4.6 (Thinking)",
+          "why": "Careful long-context research and expert-grade synthesis."
+        },
+        {
+          "rank": 5,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (Medium)",
+          "why": "Balanced research when latency matters."
+        }
+      ]
+    },
+    "requirements_user_stories": {
+      "sdlc_stage": "requirements",
+      "agile_context": "Write user stories, acceptance criteria, edge cases, constraints, and definition of done.",
+      "task_aliases": [
+        "user_story",
+        "acceptance_criteria",
+        "requirements",
+        "spec"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Claude Code",
+          "model": "sonnet",
+          "why": "Best default for clear, practical story/spec writing."
+        },
+        {
+          "rank": 2,
+          "provider": "Antigravity CLI",
+          "model": "Claude Sonnet 4.6 (Thinking)",
+          "why": "Strong instruction following, knowledge work, and design detail."
+        },
+        {
+          "rank": 3,
+          "provider": "Codex",
+          "model": "gpt-5.4",
+          "why": "Solid professional writing plus coding awareness."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (Low)",
+          "why": "Fast for straightforward story cleanup."
+        },
+        {
+          "rank": 5,
+          "provider": "Claude Code",
+          "model": "haiku",
+          "why": "Cheap fast option for low-risk formatting and story splitting."
+        }
+      ]
+    },
+    "backlog_refinement_prioritization": {
+      "sdlc_stage": "planning",
+      "agile_context": "Split backlog items, refine scope, estimate, find dependencies, rank by value and risk.",
+      "task_aliases": [
+        "backlog",
+        "refinement",
+        "grooming",
+        "prioritize",
+        "estimate"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Claude Code",
+          "model": "sonnet",
+          "why": "Default for practical backlog cleanup and task splitting."
+        },
+        {
+          "rank": 2,
+          "provider": "Antigravity CLI",
+          "model": "Claude Sonnet 4.6 (Thinking)",
+          "why": "Good for product, design, and implementation tradeoffs."
+        },
+        {
+          "rank": 3,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (Medium)",
+          "why": "Good agentic planner for iterative backlog work."
+        },
+        {
+          "rank": 4,
+          "provider": "Codex",
+          "model": "gpt-5.4",
+          "why": "Good cost/performance for everyday engineering planning."
+        },
+        {
+          "rank": 5,
+          "provider": "Codex",
+          "model": "gpt-5.4-mini",
+          "why": "Fast option for small, obvious refinement."
+        }
+      ]
+    },
+    "sprint_planning": {
+      "sdlc_stage": "planning",
+      "agile_context": "Create sprint goals, implementation plans, task breakdowns, dependency checks, and risk notes.",
+      "task_aliases": [
+        "write_plan",
+        "plan",
+        "implementation_plan",
+        "sprint_plan",
+        "viet_plan"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Codex",
+          "model": "gpt-5.5",
+          "why": "Best OpenAI option for complex reasoning and coding plans."
+        },
+        {
+          "rank": 2,
+          "provider": "Antigravity CLI",
+          "model": "Claude Opus 4.6 (Thinking)",
+          "why": "Careful planning for larger codebases and long-horizon tasks."
+        },
+        {
+          "rank": 3,
+          "provider": "Claude Code",
+          "model": "fable",
+          "why": "Use when the plan may need long-running agentic execution."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (High)",
+          "why": "High-effort Gemini path for hard code and agent plans."
+        },
+        {
+          "rank": 5,
+          "provider": "Claude Code",
+          "model": "sonnet",
+          "why": "Default for normal sprint/task plans."
+        }
+      ]
+    },
+    "architecture_design": {
+      "sdlc_stage": "design",
+      "agile_context": "System design, architecture tradeoffs, data model/API design, migration strategy, non-functional requirements.",
+      "task_aliases": [
+        "architecture",
+        "design",
+        "system_design",
+        "api_design",
+        "data_model"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Claude Code",
+          "model": "fable",
+          "why": "Strongest option for high-stakes long-horizon architecture."
+        },
+        {
+          "rank": 2,
+          "provider": "Codex",
+          "model": "gpt-5.5",
+          "why": "Strong complex reasoning and coding-aware design."
+        },
+        {
+          "rank": 3,
+          "provider": "Antigravity CLI",
+          "model": "Claude Opus 4.6 (Thinking)",
+          "why": "Careful design review for large codebases and edge cases."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.1 Pro (High)",
+          "why": "Good for broad multimodal/long-context tradeoff analysis."
+        },
+        {
+          "rank": 5,
+          "provider": "Claude Code",
+          "model": "opus",
+          "why": "Good Claude Code option for implementation-oriented architecture."
+        }
+      ]
+    },
+    "ui_ux_prototyping": {
+      "sdlc_stage": "design",
+      "agile_context": "UX flows, frontend prototypes, design-system-aware UI implementation, accessibility and interaction design.",
+      "task_aliases": [
+        "ui",
+        "ux",
+        "prototype",
+        "frontend_design",
+        "mockup"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Antigravity CLI",
+          "model": "Claude Sonnet 4.6 (Thinking)",
+          "why": "Strong balance of frontend code, design sense, and knowledge work."
+        },
+        {
+          "rank": 2,
+          "provider": "Codex",
+          "model": "gpt-5.4",
+          "why": "Strong for frontend coding and computer-use workflows."
+        },
+        {
+          "rank": 3,
+          "provider": "Codex",
+          "model": "gpt-5.5",
+          "why": "Use for complex frontend architecture or production-grade flows."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (High)",
+          "why": "Good for coding agents and interactive prototyping."
+        },
+        {
+          "rank": 5,
+          "provider": "Claude Code",
+          "model": "sonnet",
+          "why": "Good default for everyday frontend work."
+        }
+      ]
+    },
+    "implementation_coding": {
+      "sdlc_stage": "development",
+      "agile_context": "Implement backlog items, refactor small areas, wire APIs, edit code, and run local verification.",
+      "task_aliases": [
+        "code",
+        "implement",
+        "build",
+        "refactor",
+        "feature"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Claude Code",
+          "model": "sonnet",
+          "why": "Best default for everyday implementation."
+        },
+        {
+          "rank": 2,
+          "provider": "Codex",
+          "model": "gpt-5.4",
+          "why": "Strong coding model with good cost/performance."
+        },
+        {
+          "rank": 3,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (Medium)",
+          "why": "Good for iterative coding loops and agentic execution."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Claude Sonnet 4.6 (Thinking)",
+          "why": "Use for higher-quality implementation and design-sensitive code."
+        },
+        {
+          "rank": 5,
+          "provider": "Codex",
+          "model": "gpt-5.4-mini",
+          "why": "Fast for small, bounded changes."
+        }
+      ]
+    },
+    "debugging_root_cause": {
+      "sdlc_stage": "development",
+      "agile_context": "Reproduce bugs, trace callers, find root cause, patch shared logic, and verify regressions.",
+      "task_aliases": [
+        "debug",
+        "bugfix",
+        "root_cause",
+        "triage",
+        "investigate_failure"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Antigravity CLI",
+          "model": "Claude Opus 4.6 (Thinking)",
+          "why": "Strong at careful debugging, code review, and large codebases."
+        },
+        {
+          "rank": 2,
+          "provider": "Claude Code",
+          "model": "opus",
+          "why": "Good Claude Code path for root-cause work."
+        },
+        {
+          "rank": 3,
+          "provider": "Codex",
+          "model": "gpt-5.5",
+          "why": "Strong for hard reasoning and coding fixes."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (High)",
+          "why": "Good for hard coding/debugging with tools."
+        },
+        {
+          "rank": 5,
+          "provider": "Claude Code",
+          "model": "sonnet",
+          "why": "Default for normal bugfixes."
+        }
+      ]
+    },
+    "code_review_quality": {
+      "sdlc_stage": "verification",
+      "agile_context": "Review diffs, find regressions, check maintainability, identify missing tests, and validate acceptance criteria.",
+      "task_aliases": [
+        "review",
+        "code_review",
+        "pr_review",
+        "diff_review"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Antigravity CLI",
+          "model": "Claude Opus 4.6 (Thinking)",
+          "why": "Strong code review and mistake-catching on larger codebases."
+        },
+        {
+          "rank": 2,
+          "provider": "Claude Code",
+          "model": "fable",
+          "why": "Use for high-stakes review and cross-repo context."
+        },
+        {
+          "rank": 3,
+          "provider": "Codex",
+          "model": "gpt-5.5",
+          "why": "Good independent frontier review."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Claude Sonnet 4.6 (Thinking)",
+          "why": "Good balanced review for normal PRs."
+        },
+        {
+          "rank": 5,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (High)",
+          "why": "Good provider-diverse review for hard diffs."
+        }
+      ]
+    },
+    "testing_qa": {
+      "sdlc_stage": "verification",
+      "agile_context": "Test strategy, unit/integration/e2e test generation, acceptance checks, QA scenarios, and regression verification.",
+      "task_aliases": [
+        "test",
+        "qa",
+        "verification",
+        "acceptance_test",
+        "regression"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Codex",
+          "model": "gpt-5.4",
+          "why": "Strong for coding tests and verification logic."
+        },
+        {
+          "rank": 2,
+          "provider": "Claude Code",
+          "model": "sonnet",
+          "why": "Good default for writing focused tests."
+        },
+        {
+          "rank": 3,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (Medium)",
+          "why": "Good for iterative test generation and tool loops."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "GPT-OSS 120B (Medium)",
+          "why": "Useful private/offline high-reasoning test work."
+        },
+        {
+          "rank": 5,
+          "provider": "Codex",
+          "model": "gpt-5.4-mini",
+          "why": "Fast for simple unit tests and expected-output checks."
+        }
+      ]
+    },
+    "security_review": {
+      "sdlc_stage": "verification",
+      "agile_context": "Threat modeling, secure design review, vulnerability triage, auth/data boundary checks, and abuse-case review.",
+      "task_aliases": [
+        "security",
+        "threat_model",
+        "vulnerability",
+        "secure_review"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Antigravity CLI",
+          "model": "Claude Opus 4.6 (Thinking)",
+          "why": "Strong for cybersecurity-oriented review and deep reasoning."
+        },
+        {
+          "rank": 2,
+          "provider": "Claude Code",
+          "model": "fable",
+          "why": "Use for high-stakes security analysis."
+        },
+        {
+          "rank": 3,
+          "provider": "Codex",
+          "model": "gpt-5.5",
+          "why": "Strong independent security reasoning."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.1 Pro (High)",
+          "why": "Good for broad system and document context."
+        },
+        {
+          "rank": 5,
+          "provider": "Antigravity CLI",
+          "model": "GPT-OSS 120B (Medium)",
+          "why": "Use when code or findings must stay local/private."
+        }
+      ]
+    },
+    "release_deployment": {
+      "sdlc_stage": "release",
+      "agile_context": "Release plan, deployment checklist, CI/CD notes, rollback plan, migration steps, and release notes.",
+      "task_aliases": [
+        "release",
+        "deploy",
+        "ci_cd",
+        "rollback",
+        "runbook"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Codex",
+          "model": "gpt-5.4",
+          "why": "Good for practical deployment and automation tasks."
+        },
+        {
+          "rank": 2,
+          "provider": "Claude Code",
+          "model": "sonnet",
+          "why": "Good default for checklists and release engineering."
+        },
+        {
+          "rank": 3,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (Medium)",
+          "why": "Good for multi-step tool and deployment planning."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Claude Sonnet 4.6 (Thinking)",
+          "why": "Good for careful runbooks and release notes."
+        },
+        {
+          "rank": 5,
+          "provider": "Claude Code",
+          "model": "haiku",
+          "why": "Fast for simple release-note drafting."
+        }
+      ]
+    },
+    "workspace_setup": {
+      "sdlc_stage": "planning",
+      "agile_context": "Set up or detect isolated workspaces, worktrees, repo baseline state, local environment, and pre-implementation verification.",
+      "task_aliases": [
+        "workspace",
+        "worktree",
+        "environment_setup",
+        "project_setup",
+        "repo_setup"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Codex",
+          "model": "gpt-5.4-mini",
+          "why": "Fast for bounded workspace and repository setup checks."
+        },
+        {
+          "rank": 2,
+          "provider": "Claude Code",
+          "model": "haiku",
+          "why": "Cheap option for simple setup and verification commands."
+        },
+        {
+          "rank": 3,
+          "provider": "Claude Code",
+          "model": "sonnet",
+          "why": "Default when setup needs platform judgment or recovery."
+        },
+        {
+          "rank": 4,
+          "provider": "Codex",
+          "model": "gpt-5.4",
+          "why": "Use when setup touches several project conventions."
+        },
+        {
+          "rank": 5,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (Medium)",
+          "why": "Good for multi-step setup in agentic tool loops."
+        }
+      ]
+    },
+    "monitoring_incident_ops": {
+      "sdlc_stage": "operations",
+      "agile_context": "Monitoring design, incident triage, log synthesis, postmortems, service reliability, and operational follow-up.",
+      "task_aliases": [
+        "incident",
+        "ops",
+        "monitoring",
+        "postmortem",
+        "rca"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Claude Code",
+          "model": "opus",
+          "why": "Good for long-running operational investigation."
+        },
+        {
+          "rank": 2,
+          "provider": "Antigravity CLI",
+          "model": "Claude Opus 4.6 (Thinking)",
+          "why": "Strong at root-cause analysis and long-context reasoning."
+        },
+        {
+          "rank": 3,
+          "provider": "Codex",
+          "model": "gpt-5.5",
+          "why": "Strong for incident synthesis and remediation plans."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (High)",
+          "why": "Good for hard multi-step ops reasoning."
+        },
+        {
+          "rank": 5,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.1 Pro (High)",
+          "why": "Good for large docs/log context and multimodal evidence."
+        }
+      ]
+    },
+    "documentation_knowledge_transfer": {
+      "sdlc_stage": "maintenance",
+      "agile_context": "Developer docs, ADRs, changelogs, onboarding docs, handoff notes, and knowledge-base cleanup.",
+      "task_aliases": [
+        "docs",
+        "documentation",
+        "adr",
+        "changelog",
+        "handoff"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Claude Code",
+          "model": "sonnet",
+          "why": "Good default for clear engineering documentation."
+        },
+        {
+          "rank": 2,
+          "provider": "Antigravity CLI",
+          "model": "Claude Sonnet 4.6 (Thinking)",
+          "why": "Strong for polished knowledge work."
+        },
+        {
+          "rank": 3,
+          "provider": "Codex",
+          "model": "gpt-5.4",
+          "why": "Good professional writing with code awareness."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.5 Flash (Low)",
+          "why": "Fast for straightforward docs and summaries."
+        },
+        {
+          "rank": 5,
+          "provider": "Claude Code",
+          "model": "haiku",
+          "why": "Fast for low-risk formatting, summaries, and changelogs."
+        }
+      ]
+    },
+    "retrospective_process_improvement": {
+      "sdlc_stage": "continuous_improvement",
+      "agile_context": "Retrospective facilitation, process metrics, working-agreement updates, and improvement experiments.",
+      "task_aliases": [
+        "retro",
+        "retrospective",
+        "continuous_improvement",
+        "process"
+      ],
+      "recommended_models": [
+        {
+          "rank": 1,
+          "provider": "Codex",
+          "model": "gpt-5.5",
+          "why": "Strong for cross-signal reasoning and improvement planning."
+        },
+        {
+          "rank": 2,
+          "provider": "Claude Code",
+          "model": "fable",
+          "why": "Good for long-horizon process and org reasoning."
+        },
+        {
+          "rank": 3,
+          "provider": "Antigravity CLI",
+          "model": "Gemini 3.1 Pro (High)",
+          "why": "Good for synthesizing broad qualitative and quantitative inputs."
+        },
+        {
+          "rank": 4,
+          "provider": "Antigravity CLI",
+          "model": "Claude Sonnet 4.6 (Thinking)",
+          "why": "Good for practical knowledge-work outputs."
+        },
+        {
+          "rank": 5,
+          "provider": "Claude Code",
+          "model": "sonnet",
+          "why": "Default for normal retrospective notes and action items."
+        }
+      ]
+    }
+  },
+  "quick_lookup": {
+    "research": "discovery_research",
+    "product_discovery": "discovery_research",
+    "domain_research": "discovery_research",
+    "feasibility": "discovery_research",
+    "user_story": "requirements_user_stories",
+    "acceptance_criteria": "requirements_user_stories",
+    "requirements": "requirements_user_stories",
+    "spec": "requirements_user_stories",
+    "backlog": "backlog_refinement_prioritization",
+    "refinement": "backlog_refinement_prioritization",
+    "grooming": "backlog_refinement_prioritization",
+    "prioritize": "backlog_refinement_prioritization",
+    "estimate": "backlog_refinement_prioritization",
+    "write_plan": "sprint_planning",
+    "plan": "sprint_planning",
+    "implementation_plan": "sprint_planning",
+    "sprint_plan": "sprint_planning",
+    "viet_plan": "sprint_planning",
+    "architecture": "architecture_design",
+    "design": "architecture_design",
+    "system_design": "architecture_design",
+    "api_design": "architecture_design",
+    "data_model": "architecture_design",
+    "ui": "ui_ux_prototyping",
+    "ux": "ui_ux_prototyping",
+    "prototype": "ui_ux_prototyping",
+    "frontend_design": "ui_ux_prototyping",
+    "mockup": "ui_ux_prototyping",
+    "code": "implementation_coding",
+    "implement": "implementation_coding",
+    "build": "implementation_coding",
+    "refactor": "implementation_coding",
+    "feature": "implementation_coding",
+    "debug": "debugging_root_cause",
+    "bugfix": "debugging_root_cause",
+    "root_cause": "debugging_root_cause",
+    "triage": "debugging_root_cause",
+    "investigate_failure": "debugging_root_cause",
+    "review": "code_review_quality",
+    "code_review": "code_review_quality",
+    "pr_review": "code_review_quality",
+    "diff_review": "code_review_quality",
+    "test": "testing_qa",
+    "qa": "testing_qa",
+    "verification": "testing_qa",
+    "acceptance_test": "testing_qa",
+    "regression": "testing_qa",
+    "security": "security_review",
+    "threat_model": "security_review",
+    "vulnerability": "security_review",
+    "secure_review": "security_review",
+    "release": "release_deployment",
+    "deploy": "release_deployment",
+    "ci_cd": "release_deployment",
+    "rollback": "release_deployment",
+    "runbook": "release_deployment",
+    "workspace": "workspace_setup",
+    "worktree": "workspace_setup",
+    "environment_setup": "workspace_setup",
+    "project_setup": "workspace_setup",
+    "repo_setup": "workspace_setup",
+    "incident": "monitoring_incident_ops",
+    "ops": "monitoring_incident_ops",
+    "monitoring": "monitoring_incident_ops",
+    "postmortem": "monitoring_incident_ops",
+    "rca": "monitoring_incident_ops",
+    "docs": "documentation_knowledge_transfer",
+    "documentation": "documentation_knowledge_transfer",
+    "adr": "documentation_knowledge_transfer",
+    "changelog": "documentation_knowledge_transfer",
+    "handoff": "documentation_knowledge_transfer",
+    "retro": "retrospective_process_improvement",
+    "retrospective": "retrospective_process_improvement",
+    "continuous_improvement": "retrospective_process_improvement",
+    "process": "retrospective_process_improvement"
+  },
+  "research_sources": [
+    {
+      "id": "agile_manifesto",
+      "title": "Manifesto for Agile Software Development",
+      "url": "https://agilemanifesto.org/",
+      "used_for": "Agile values: working software, customer collaboration, responding to change."
+    },
+    {
+      "id": "scrum_guide_2020",
+      "title": "The 2020 Scrum Guide",
+      "url": "https://scrumguides.org/scrum-guide.html",
+      "used_for": "Sprints, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective."
+    },
+    {
+      "id": "atlassian_sdlc",
+      "title": "What is Software Development Life Cycle (SDLC)?",
+      "url": "https://www.atlassian.com/agile/software-development/sdlc",
+      "used_for": "SDLC phases: planning, feasibility, design, implementation, testing, deployment, maintenance."
+    },
+    {
+      "id": "agile_alliance_backlog_refinement",
+      "title": "What is Backlog Refinement?",
+      "url": "https://agilealliance.org/glossary/backlog-refinement/",
+      "used_for": "Backlog refinement as dynamic requirements/detail/estimation work."
+    },
+    {
+      "id": "agile_alliance_user_stories",
+      "title": "What are User Stories?",
+      "url": "https://agilealliance.org/glossary/user-stories/",
+      "used_for": "User stories as functional increments of work."
+    },
+    {
+      "id": "openai_models",
+      "title": "OpenAI API Models",
+      "url": "https://developers.openai.com/api/docs/models",
+      "used_for": "gpt-5.5, gpt-5.4, and gpt-5.4-mini model-selection guidance."
+    },
+    {
+      "id": "openai_gpt_5_4",
+      "title": "Introducing GPT-5.4",
+      "url": "https://openai.com/index/introducing-gpt-5-4/",
+      "used_for": "GPT-5.4 coding, computer-use, and long-context positioning."
+    },
+    {
+      "id": "openai_gpt_oss",
+      "title": "Introducing gpt-oss",
+      "url": "https://openai.com/index/introducing-gpt-oss/",
+      "used_for": "GPT-OSS 120B open-weight reasoning, coding, tool-use, and local/private routing."
+    },
+    {
+      "id": "gemini_3_5_flash",
+      "title": "What's new in Gemini 3.5 Flash",
+      "url": "https://ai.google.dev/gemini-api/docs/whats-new-gemini-3.5",
+      "used_for": "Gemini 3.5 Flash effort levels and agentic/coding recommendations."
+    },
+    {
+      "id": "gemini_3_1_pro_card",
+      "title": "Gemini 3.1 Pro Model Card",
+      "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/",
+      "used_for": "Gemini 3.1 Pro broad-context, multimodal, advanced reasoning positioning."
+    },
+    {
+      "id": "anthropic_sonnet_4_6",
+      "title": "Introducing Claude Sonnet 4.6",
+      "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+      "used_for": "Sonnet 4.6 coding, computer use, long-context reasoning, planning, knowledge work, and design."
+    },
+    {
+      "id": "anthropic_opus_4_6",
+      "title": "Introducing Claude Opus 4.6",
+      "url": "https://www.anthropic.com/news/claude-opus-4-6",
+      "used_for": "Opus 4.6 careful planning, large-codebase work, debugging, review, and long-context routing."
+    },
+    {
+      "id": "anthropic_models_overview",
+      "title": "Claude models overview",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "used_for": "Claude Code alias-family mapping for fable, opus, sonnet, and haiku."
+    }
+  ]
+}
