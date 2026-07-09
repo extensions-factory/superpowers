@@ -68,6 +68,7 @@ digraph tdd_cycle {
 }
 ```
 
+<!-- START SDLC: testing_qa -->
 ### RED - Write Failing Test
 
 Write one minimal test showing what should happen.
@@ -126,7 +127,9 @@ Confirm:
 **Test passes?** You're testing existing behavior. Fix test.
 
 **Test errors?** Fix error, re-run until it fails correctly.
+<!-- END SDLC: testing_qa -->
 
+<!-- START SDLC: implementation_coding -->
 ### GREEN - Minimal Code
 
 Write simplest code to pass the test.
@@ -164,7 +167,9 @@ Over-engineered
 </Bad>
 
 Don't add features, refactor other code, or "improve" beyond the test.
+<!-- END SDLC: implementation_coding -->
 
+<!-- START SDLC: testing_qa -->
 ### Verify GREEN - Watch It Pass
 
 **MANDATORY.**
@@ -190,6 +195,7 @@ After green only:
 - Extract helpers
 
 Keep tests green. Don't add behavior.
+<!-- END SDLC: testing_qa -->
 
 ### Repeat
 

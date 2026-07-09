@@ -15,6 +15,7 @@ Guide completion of development work by presenting clear options and handling ch
 
 ## The Process
 
+<!-- START SDLC: testing_qa -->
 ### Step 1: Verify Tests
 
 **Before presenting options, verify tests pass:**
@@ -36,7 +37,9 @@ Cannot proceed with merge/PR until tests pass.
 Stop. Don't proceed to Step 2.
 
 **If tests pass:** Continue to Step 2.
+<!-- END SDLC: testing_qa -->
 
+<!-- START SDLC: release_deployment -->
 ### Step 2: Detect Environment
 
 **Determine workspace state before presenting options:**
@@ -209,6 +212,7 @@ git worktree prune  # Self-healing: clean up any stale registrations
 ```
 
 **Otherwise:** The host environment (harness) owns this workspace. Do NOT remove it. If your platform provides a workspace-exit tool, use it. Otherwise, leave the workspace in place.
+<!-- END SDLC: release_deployment -->
 
 ## Quick Reference
 

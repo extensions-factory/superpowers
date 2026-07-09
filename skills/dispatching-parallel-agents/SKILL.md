@@ -46,6 +46,7 @@ digraph when_to_use {
 
 ## The Pattern
 
+<!-- START SDLC: backlog_refinement_prioritization -->
 ### 1. Identify Independent Domains
 
 Group failures by what's broken:
@@ -54,7 +55,9 @@ Group failures by what's broken:
 - File C tests: Abort functionality
 
 Each domain is independent - fixing tool approval doesn't affect abort tests.
+<!-- END SDLC: backlog_refinement_prioritization -->
 
+<!-- START SDLC: sprint_planning -->
 ### 2. Create Focused Agent Tasks
 
 Each agent gets:
@@ -62,7 +65,9 @@ Each agent gets:
 - **Clear goal:** Make these tests pass
 - **Constraints:** Don't change other code
 - **Expected output:** Summary of what you found and fixed
+<!-- END SDLC: sprint_planning -->
 
+<!-- START SDLC: implementation_coding -->
 ### 3. Dispatch in Parallel
 
 Issue all three subagent dispatches in the same response — they run in parallel:
@@ -75,7 +80,9 @@ Subagent (general-purpose): "Fix tool-approval-race-conditions.test.ts failures"
 ```
 
 Multiple dispatch calls in one response = parallel execution. One per response = sequential.
+<!-- END SDLC: implementation_coding -->
 
+<!-- START SDLC: code_review_quality -->
 ### 4. Review and Integrate
 
 When agents return:
@@ -83,6 +90,7 @@ When agents return:
 - Verify fixes don't conflict
 - Run full test suite
 - Integrate all changes
+<!-- END SDLC: code_review_quality -->
 
 ## Agent Prompt Structure
 

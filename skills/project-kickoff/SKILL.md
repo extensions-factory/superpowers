@@ -20,6 +20,7 @@ Use this skill when **either** holds:
 
 Discovery → Setup → Scaffold spec → Handoff. Each phase is defined below. **Do not skip or reorder phases.** Discovery gates everything after it.
 
+<!-- START SDLC: discovery_research -->
 ## Phase 1 — Discovery (gates everything)
 
 1. **Idea capture** — ask exactly one question: "What are you building, in a sentence?" Use the answer to seed research and later stack questions. Do not persist it as a vision doc.
@@ -33,7 +34,9 @@ Discovery → Setup → Scaffold spec → Handoff. Each phase is defined below. 
 3. **Synthesize, present, commit** — synthesize findings into `docs/superpowers/specs/YYYY-MM-DD-<topic>-discovery.md` (similar products + comparison, potential assessment, risks, differentiation). Present it to your human partner, then commit it before moving on.
 
 **This phase gates the rest.** Do not start Setup until the discovery doc is written and committed — even if the human "already knows the space." The research grounds the stack decision and the later `brainstorming` session.
+<!-- END SDLC: discovery_research -->
 
+<!-- START SDLC: requirements_user_stories -->
 ## Phase 2 — Setup
 
 Ask questions **one at a time**, multiple-choice where possible (same discipline as `brainstorming`), informed by the discovery doc.
@@ -42,7 +45,9 @@ Ask questions **one at a time**, multiple-choice where possible (same discipline
 2. **Standards** — formatter/linter, naming conventions, commit convention, test-file convention.
 3. **AI tools** — multi-select: "Which AI coding tools do you use?" (Claude Code, Codex, Gemini CLI, Copilot, other/none). This drives which per-tool instruction files the scaffold spec will create.
 4. **Bootstrap the repo** — `git init` (if not already a repo) and make an empty initial commit. This is the one piece of bootstrapping nothing downstream can do for itself.
+<!-- END SDLC: requirements_user_stories -->
 
+<!-- START SDLC: architecture_design -->
 ## Phase 3 — Scaffold spec
 
 Write `docs/superpowers/specs/YYYY-MM-DD-<topic>-scaffold-design.md` using the standard `brainstorming` spec format and self-review, scoped to tooling not features. Express all concrete scaffolding as **tasks for the plan** (do NOT run them here):
@@ -55,6 +60,7 @@ Write `docs/superpowers/specs/YYYY-MM-DD-<topic>-scaffold-design.md` using the s
 - Walking-skeleton verification: run build/dev/test and the linter once; confirm a green baseline before the branch is finished.
 
 For projects that use a product roadmap, add roadmap entries for the discovery and scaffold specs. (Skip if the project has no roadmap.)
+<!-- END SDLC: architecture_design -->
 
 ## Phase 4 — Handoff
 

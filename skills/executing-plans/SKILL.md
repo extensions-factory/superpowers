@@ -15,12 +15,15 @@ Load plan, review critically, execute all tasks, report when complete.
 
 ## The Process
 
+<!-- START SDLC: sprint_planning -->
 ### Step 1: Load and Review Plan
 1. Read plan file
 2. Review critically - identify any questions or concerns about the plan
 3. If concerns: Raise them with your human partner before starting
 4. If no concerns: Create todos for the plan items and proceed
+<!-- END SDLC: sprint_planning -->
 
+<!-- START SDLC: implementation_coding -->
 ### Step 2: Execute Tasks
 
 For each task:
@@ -28,6 +31,7 @@ For each task:
 2. Follow each step exactly (plan has bite-sized steps)
 3. Run verifications as specified
 4. Mark as completed
+<!-- END SDLC: implementation_coding -->
 
 ### Step 3: Complete Development
 

@@ -21,6 +21,7 @@ NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
 
 If you haven't run the verification command in this message, you cannot claim it passes.
 
+<!-- START SDLC: testing_qa -->
 ## The Gate Function
 
 ```
@@ -36,6 +37,7 @@ BEFORE claiming any status or expressing satisfaction:
 
 Skip any step = lying, not verifying
 ```
+<!-- END SDLC: testing_qa -->
 
 ## Common Failures
 

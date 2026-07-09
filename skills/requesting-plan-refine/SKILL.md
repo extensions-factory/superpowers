@@ -21,6 +21,7 @@ Invoked when the user picks "Refine" at the `writing-plans` handoff, or again
 when `receiving-plan-refine`'s loop continues. Optional — skip when the user
 chooses to execute directly.
 
+<!-- START SDLC: code_review_quality -->
 ## How to Request
 
 **1. Locate the plan (and spec, if any):**
@@ -50,6 +51,7 @@ printf '*\n' > "$dir/.gitignore"
 
 **4. Receive the result:** the subagent returns only the findings file path
 and a one-line summary — never paste findings text into your own context.
+<!-- END SDLC: code_review_quality -->
 
 ## Next Step
 

@@ -11,6 +11,7 @@ Code review requires technical evaluation, not emotional performance.
 
 **Core principle:** Verify before implementing. Ask before assuming. Technical correctness over social comfort.
 
+<!-- START SDLC: code_review_quality -->
 ## The Response Pattern
 
 ```
@@ -96,7 +97,9 @@ IF reviewer suggests "implementing properly":
 ```
 
 **your human partner's rule:** "You and reviewer both report to me. If we don't need this feature, don't add it."
+<!-- END SDLC: code_review_quality -->
 
+<!-- START SDLC: implementation_coding -->
 ## Implementation Order
 
 ```
@@ -109,6 +112,7 @@ FOR multi-item feedback:
   3. Test each fix individually
   4. Verify no regressions
 ```
+<!-- END SDLC: implementation_coding -->
 
 ## When To Push Back
 

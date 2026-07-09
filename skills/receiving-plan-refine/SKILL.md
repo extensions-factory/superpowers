@@ -17,6 +17,7 @@ Technical correctness over blind acceptance.
 **Announce at start:** "I'm using the receiving-plan-refine skill to
 evaluate the refine findings."
 
+<!-- START SDLC: code_review_quality -->
 ## The Process
 
 1. **Read** the findings file (path handed off from `requesting-plan-refine`).
@@ -30,6 +31,7 @@ evaluate the refine findings."
    - If it doesn't: note why in your summary, don't apply it
 3. **Regenerate the plan's HTML companion** (per `writing-plans`) since the
    plan changed.
+<!-- END SDLC: code_review_quality -->
 4. **Report and ask:**
 
 > "Findings addressed in `<plan path>`: [N] fixed, [M] declined (with

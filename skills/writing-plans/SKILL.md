@@ -30,6 +30,7 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 - Regenerate the HTML whenever the plan changes, and save it alongside the `.md`.
 <!-- end created by riso-tech -->
 
+<!-- START SDLC: backlog_refinement_prioritization -->
 ## Scope Check
 
 If the spec covers multiple independent subsystems, it should have been broken into sub-project specs during brainstorming. If it wasn't, suggest breaking this into separate plans — one per subsystem. Each plan should produce working, testable software on its own.
@@ -66,7 +67,9 @@ first US, using the same task format. Setup needed by a single story stays
 folded into that story's tasks, per Task Right-Sizing. Omit the section
 entirely when nothing qualifies — it is not a setup dumping ground.
 <!-- end created by riso-tech -->
+<!-- END SDLC: backlog_refinement_prioritization -->
 
+<!-- START SDLC: architecture_design -->
 ## File Structure
 
 Before defining tasks, map out which files will be created or modified and what each one is responsible for. This is where decomposition decisions get locked in.
@@ -77,7 +80,9 @@ Before defining tasks, map out which files will be created or modified and what 
 - In existing codebases, follow established patterns. If the codebase uses large files, don't unilaterally restructure - but if a file you're modifying has grown unwieldy, including a split in the plan is reasonable.
 
 This structure informs the task decomposition. Each task should produce self-contained changes that make sense independently.
+<!-- END SDLC: architecture_design -->
 
+<!-- START SDLC: sprint_planning -->
 ## Task Right-Sizing
 
 A task is the smallest unit that carries its own test cycle and is worth a
@@ -207,7 +212,9 @@ Every step must contain the actual content an engineer needs. These are **plan f
 - Complete code in every step — if a step changes code, show the code
 - Exact commands with expected output
 - DRY, YAGNI, TDD, frequent commits
+<!-- END SDLC: sprint_planning -->
 
+<!-- START SDLC: code_review_quality -->
 ## Self-Review
 
 After writing the complete plan, look at the spec with fresh eyes and check the plan against it. This is a checklist you run yourself — not a subagent dispatch.
@@ -225,6 +232,7 @@ After writing the complete plan, look at the spec with fresh eyes and check the 
 <!-- end created by riso-tech -->
 
 If you find issues, fix them inline. No need to re-review — just fix and move on. If you find a spec requirement with no task, add the task.
+<!-- END SDLC: code_review_quality -->
 
 ## Execution Handoff
 

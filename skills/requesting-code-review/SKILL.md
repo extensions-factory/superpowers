@@ -21,6 +21,7 @@ Dispatch a code reviewer subagent to catch issues before they cascade. The revie
 - Before refactoring (baseline check)
 - After fixing complex bug
 
+<!-- START SDLC: code_review_quality -->
 ## How to Request
 
 **1. Get git SHAs:**
@@ -44,6 +45,7 @@ Dispatch a `general-purpose` subagent, filling the template at [code-reviewer.md
 - Fix Important issues before proceeding
 - Note Minor issues for later
 - Push back if reviewer is wrong (with reasoning)
+<!-- END SDLC: code_review_quality -->
 
 ## Example
 

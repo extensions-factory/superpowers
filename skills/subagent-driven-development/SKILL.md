@@ -82,6 +82,7 @@ digraph process {
 }
 ```
 
+<!-- START SDLC: backlog_refinement_prioritization -->
 ## Pre-Flight Plan Review
 
 Before dispatching Task 1, scan the plan once for conflicts:
@@ -95,7 +96,9 @@ each finding beside the plan text that mandates it, asking which governs —
 before execution begins, not one interrupt per discovery mid-plan. If the
 scan is clean, proceed without comment. The review loop remains the net for
 conflicts that only emerge from implementation.
+<!-- END SDLC: backlog_refinement_prioritization -->
 
+<!-- START SDLC: sprint_planning -->
 ## Model Selection
 
 Use the least powerful model that can handle each role to conserve cost and increase speed.
@@ -128,7 +131,9 @@ that implementer. Single-file mechanical fixes also take the cheapest tier.
 - Touches 1-2 files with a complete spec → cheap model
 - Touches multiple files with integration concerns → standard model
 - Requires design judgment or broad codebase understanding → most capable model
+<!-- END SDLC: sprint_planning -->
 
+<!-- START SDLC: implementation_coding -->
 ## Handling Implementer Status
 
 Implementer subagents report one of four statuses. Handle each appropriately:
@@ -146,7 +151,9 @@ Implementer subagents report one of four statuses. Handle each appropriately:
 4. If the plan itself is wrong, escalate to the human
 
 **Never** ignore an escalation or force the same model to retry without changes. If the implementer said it's stuck, something needs to change.
+<!-- END SDLC: implementation_coding -->
 
+<!-- START SDLC: code_review_quality -->
 ## Handling Reviewer ⚠️ Items
 
 The task reviewer may report "⚠️ Cannot verify from diff" items — requirements
@@ -215,6 +222,7 @@ final whole-branch review. When you fill a reviewer template:
   subagent with the complete findings list — not one fixer per finding.
   Per-finding fixers each rebuild context and re-run suites; a real
   session's final-review fix wave cost more than all its tasks combined.
+<!-- END SDLC: code_review_quality -->
 
 ## File Handoffs
 

@@ -47,6 +47,7 @@ Use for ANY technical issue:
 
 You MUST complete each phase before proceeding to the next.
 
+<!-- START SDLC: debugging_root_cause -->
 ### Phase 1: Root Cause Investigation
 
 **BEFORE attempting ANY fix:**
@@ -166,7 +167,9 @@ You MUST complete each phase before proceeding to the next.
    - Don't pretend to know
    - Ask for help
    - Research more
+<!-- END SDLC: debugging_root_cause -->
 
+<!-- START SDLC: implementation_coding -->
 ### Phase 4: Implementation
 
 **Fix the root cause, not the symptom:**
@@ -211,6 +214,7 @@ You MUST complete each phase before proceeding to the next.
    **Discuss with your human partner before attempting more fixes**
 
    This is NOT a failed hypothesis - this is a wrong architecture.
+<!-- END SDLC: implementation_coding -->
 
 ## Red Flags - STOP and Follow Process
 

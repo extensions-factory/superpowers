@@ -392,6 +392,7 @@ Edit skill without testing? Same violation.
 
 **REQUIRED BACKGROUND:** The superpowers:test-driven-development skill explains why this matters. Same principles apply to documentation.
 
+<!-- START SDLC: testing_qa -->
 ## Testing All Skill Types
 
 Different skill types need different test approaches:
@@ -455,6 +456,7 @@ Different skill types need different test approaches:
 | "No time to test" | Deploying untested skill wastes more time fixing it later. |
 
 **All of these mean: Test before deploying. No exceptions.**
+<!-- END SDLC: testing_qa -->
 
 ## Match the Form to the Failure
 
@@ -549,6 +551,7 @@ Add to description: symptoms of when you're ABOUT to violate the rule:
 description: use when implementing any feature or bugfix, before writing implementation code
 ```
 
+<!-- START SDLC: retrospective_process_improvement -->
 ## RED-GREEN-REFACTOR for Skills
 
 Follow the TDD cycle:
@@ -583,6 +586,7 @@ Full pressure-scenario runs are the final gate, but they are slow and expensive 
 5. **Variance is a metric.** When guidance lands, reps converge on the same shape. Five different interpretations across five reps means the wording isn't binding — tighten the form before adding words.
 
 Micro-tests verify wording; they do not replace pressure scenarios for discipline skills.
+<!-- END SDLC: retrospective_process_improvement -->
 
 **Testing methodology:** See [testing-skills-with-subagents.md](testing-skills-with-subagents.md) for the complete testing methodology:
 - How to write pressure scenarios

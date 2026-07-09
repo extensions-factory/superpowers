@@ -62,6 +62,7 @@ digraph brainstorming {
 
 ## The Process
 
+<!-- START SDLC: discovery_research -->
 **Understanding the idea:**
 
 - Check out the current project state first (files, docs, recent commits)
@@ -71,13 +72,17 @@ digraph brainstorming {
 - Prefer multiple choice questions when possible, but open-ended is fine too
 - Only one question per message - if a topic needs more exploration, break it into multiple questions
 - Focus on understanding: purpose, constraints, success criteria
+<!-- END SDLC: discovery_research -->
 
+<!-- START SDLC: requirements_user_stories -->
 **Exploring approaches:**
 
 - Propose 2-3 different approaches with trade-offs
 - Present options conversationally with your recommendation and reasoning
 - Lead with your recommended option and explain why
+<!-- END SDLC: requirements_user_stories -->
 
+<!-- START SDLC: architecture_design -->
 **Presenting the design:**
 
 - Once you believe you understand what you're building, present the design
@@ -98,9 +103,11 @@ digraph brainstorming {
 - Explore the current structure before proposing changes. Follow existing patterns.
 - Where existing code has problems that affect the work (e.g., a file that's grown too large, unclear boundaries, tangled responsibilities), include targeted improvements as part of the design - the way a good developer improves code they're working in.
 - Don't propose unrelated refactoring. Stay focused on what serves the current goal.
+<!-- END SDLC: architecture_design -->
 
 ## After the Design
 
+<!-- START SDLC: documentation_knowledge_transfer -->
 **Documentation:**
 
 - Write the validated design (spec) to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
@@ -144,6 +151,7 @@ After the spec review loop passes, ask the user to review the written spec befor
 > "Spec written and committed to `<path>`. Please review it and let me know if you want to make any changes before we start writing out the implementation plan."
 
 Wait for the user's response. If they request changes, make them and re-run the spec review loop. Only proceed once the user approves.
+<!-- END SDLC: documentation_knowledge_transfer -->
 
 **Implementation:**
 
