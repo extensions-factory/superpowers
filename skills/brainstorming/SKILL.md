@@ -63,6 +63,7 @@ digraph brainstorming {
 ## The Process
 
 <!-- START SDLC: discovery_research -->
+<!-- DISPATCH: inline | reason=interactive exploration of project context with user -->
 **Understanding the idea:**
 
 - Check out the current project state first (files, docs, recent commits)
@@ -75,6 +76,7 @@ digraph brainstorming {
 <!-- END SDLC: discovery_research -->
 
 <!-- START SDLC: requirements_user_stories -->
+<!-- DISPATCH: inline | reason=interactive Q&A, one question at a time, needs user decisions -->
 **Exploring approaches:**
 
 - Propose 2-3 different approaches with trade-offs
@@ -83,6 +85,7 @@ digraph brainstorming {
 <!-- END SDLC: requirements_user_stories -->
 
 <!-- START SDLC: architecture_design -->
+<!-- DISPATCH: inline | reason=interactive design presentation, user approves section by section -->
 **Presenting the design:**
 
 - Once you believe you understand what you're building, present the design
@@ -108,6 +111,7 @@ digraph brainstorming {
 ## After the Design
 
 <!-- START SDLC: documentation_knowledge_transfer -->
+<!-- DISPATCH: role=Documentation Agent | count=1 | model=Standard | note=could draft spec + HTML companion to file -->
 **Documentation:**
 
 - Write the validated design (spec) to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`

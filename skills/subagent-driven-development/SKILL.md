@@ -83,6 +83,7 @@ digraph process {
 ```
 
 <!-- START SDLC: backlog_refinement_prioritization -->
+<!-- DISPATCH: inline | reason=pre-flight scan is controller coordination, needs full plan context -->
 ## Pre-Flight Plan Review
 
 Before dispatching Task 1, scan the plan once for conflicts:
@@ -99,6 +100,7 @@ conflicts that only emerge from implementation.
 <!-- END SDLC: backlog_refinement_prioritization -->
 
 <!-- START SDLC: sprint_planning -->
+<!-- DISPATCH: inline | reason=model selection is controller decision, not delegatable -->
 ## Model Selection
 
 Use the least powerful model that can handle each role to conserve cost and increase speed.
@@ -134,6 +136,7 @@ that implementer. Single-file mechanical fixes also take the cheapest tier.
 <!-- END SDLC: sprint_planning -->
 
 <!-- START SDLC: implementation_coding -->
+<!-- DISPATCH: role=Implementer | count=1 | per_task=true | model=cheap/standard/high (by complexity) | template=implementer-prompt.md -->
 ## Handling Implementer Status
 
 Implementer subagents report one of four statuses. Handle each appropriately:
@@ -154,6 +157,9 @@ Implementer subagents report one of four statuses. Handle each appropriately:
 <!-- END SDLC: implementation_coding -->
 
 <!-- START SDLC: code_review_quality -->
+<!-- DISPATCH: role=Task Reviewer | count=1 | per_task=true | model=scaled to diff | template=task-reviewer-prompt.md -->
+<!-- DISPATCH: role=Fix Agent | count=1 | on_condition=Critical/Important findings | template=implementer contract -->
+<!-- DISPATCH: role=Final Reviewer | count=1 | after=all tasks | model=most capable | template=requesting-code-review/code-reviewer.md -->
 ## Handling Reviewer ⚠️ Items
 
 The task reviewer may report "⚠️ Cannot verify from diff" items — requirements

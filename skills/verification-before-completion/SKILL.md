@@ -22,6 +22,7 @@ NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
 If you haven't run the verification command in this message, you cannot claim it passes.
 
 <!-- START SDLC: testing_qa -->
+<!-- DISPATCH: inline | reason=verification gate must run in same context as completion claim, evidence before assertions -->
 ## The Gate Function
 
 ```

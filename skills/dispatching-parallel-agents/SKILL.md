@@ -47,6 +47,7 @@ digraph when_to_use {
 ## The Pattern
 
 <!-- START SDLC: backlog_refinement_prioritization -->
+<!-- DISPATCH: inline | reason=domain identification is controller triage work -->
 ### 1. Identify Independent Domains
 
 Group failures by what's broken:
@@ -58,6 +59,7 @@ Each domain is independent - fixing tool approval doesn't affect abort tests.
 <!-- END SDLC: backlog_refinement_prioritization -->
 
 <!-- START SDLC: sprint_planning -->
+<!-- DISPATCH: inline | reason=prompt crafting is controller coordination work -->
 ### 2. Create Focused Agent Tasks
 
 Each agent gets:
@@ -68,6 +70,7 @@ Each agent gets:
 <!-- END SDLC: sprint_planning -->
 
 <!-- START SDLC: implementation_coding -->
+<!-- DISPATCH: role=Specialist Agent | count=N | parallel=true | model=Standard | note=one agent per independent problem domain -->
 ### 3. Dispatch in Parallel
 
 Issue all three subagent dispatches in the same response — they run in parallel:
@@ -83,6 +86,7 @@ Multiple dispatch calls in one response = parallel execution. One per response =
 <!-- END SDLC: implementation_coding -->
 
 <!-- START SDLC: code_review_quality -->
+<!-- DISPATCH: inline | reason=integration review needs cross-agent awareness, controller verifies no conflicts -->
 ### 4. Review and Integrate
 
 When agents return:

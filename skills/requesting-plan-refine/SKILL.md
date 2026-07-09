@@ -22,6 +22,7 @@ when `receiving-plan-refine`'s loop continues. Optional — skip when the user
 chooses to execute directly.
 
 <!-- START SDLC: code_review_quality -->
+<!-- DISPATCH: role=Plan Reviewer | count=1 | model=High | template=plan-reviewer.md -->
 ## How to Request
 
 **1. Locate the plan (and spec, if any):**

@@ -48,6 +48,7 @@ Use for ANY technical issue:
 You MUST complete each phase before proceeding to the next.
 
 <!-- START SDLC: debugging_root_cause -->
+<!-- DISPATCH: inline | reason=root cause investigation requires iterative hypothesis testing with full codebase context -->
 ### Phase 1: Root Cause Investigation
 
 **BEFORE attempting ANY fix:**
@@ -170,6 +171,7 @@ You MUST complete each phase before proceeding to the next.
 <!-- END SDLC: debugging_root_cause -->
 
 <!-- START SDLC: implementation_coding -->
+<!-- DISPATCH: role=Fix Agent | count=1 | model=Standard | condition=root cause identified | note=dispatch after Phase 3 confirms hypothesis -->
 ### Phase 4: Implementation
 
 **Fix the root cause, not the symptom:**

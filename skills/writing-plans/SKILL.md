@@ -31,6 +31,7 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 <!-- end created by riso-tech -->
 
 <!-- START SDLC: backlog_refinement_prioritization -->
+<!-- DISPATCH: inline | reason=scope assessment needs full spec context, controller decision -->
 ## Scope Check
 
 If the spec covers multiple independent subsystems, it should have been broken into sub-project specs during brainstorming. If it wasn't, suggest breaking this into separate plans — one per subsystem. Each plan should produce working, testable software on its own.
@@ -70,6 +71,7 @@ entirely when nothing qualifies — it is not a setup dumping ground.
 <!-- END SDLC: backlog_refinement_prioritization -->
 
 <!-- START SDLC: architecture_design -->
+<!-- DISPATCH: inline | reason=file decomposition needs full spec + codebase awareness -->
 ## File Structure
 
 Before defining tasks, map out which files will be created or modified and what each one is responsible for. This is where decomposition decisions get locked in.
@@ -83,6 +85,7 @@ This structure informs the task decomposition. Each task should produce self-con
 <!-- END SDLC: architecture_design -->
 
 <!-- START SDLC: sprint_planning -->
+<!-- DISPATCH: inline | reason=task breakdown is core plan-writing work, needs full context -->
 ## Task Right-Sizing
 
 A task is the smallest unit that carries its own test cycle and is worth a
@@ -215,6 +218,7 @@ Every step must contain the actual content an engineer needs. These are **plan f
 <!-- END SDLC: sprint_planning -->
 
 <!-- START SDLC: code_review_quality -->
+<!-- DISPATCH: role=Plan Reviewer | count=1 | model=High | template=requesting-plan-refine/plan-reviewer.md | note=self-review inline, independent review via requesting-plan-refine -->
 ## Self-Review
 
 After writing the complete plan, look at the spec with fresh eyes and check the plan against it. This is a checklist you run yourself — not a subagent dispatch.

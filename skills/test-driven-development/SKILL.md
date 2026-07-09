@@ -69,6 +69,7 @@ digraph tdd_cycle {
 ```
 
 <!-- START SDLC: testing_qa -->
+<!-- DISPATCH: inline | reason=RED phase is core TDD discipline, must be same-context as implementation -->
 ### RED - Write Failing Test
 
 Write one minimal test showing what should happen.
@@ -130,6 +131,7 @@ Confirm:
 <!-- END SDLC: testing_qa -->
 
 <!-- START SDLC: implementation_coding -->
+<!-- DISPATCH: inline | reason=GREEN phase must follow RED in same context, minimal code to pass -->
 ### GREEN - Minimal Code
 
 Write simplest code to pass the test.
@@ -170,6 +172,7 @@ Don't add features, refactor other code, or "improve" beyond the test.
 <!-- END SDLC: implementation_coding -->
 
 <!-- START SDLC: testing_qa -->
+<!-- DISPATCH: inline | reason=verify GREEN + REFACTOR must stay in same context as implementation -->
 ### Verify GREEN - Watch It Pass
 
 **MANDATORY.**

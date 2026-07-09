@@ -21,6 +21,7 @@ Use this skill when **either** holds:
 Discovery → Setup → Scaffold spec → Handoff. Each phase is defined below. **Do not skip or reorder phases.** Discovery gates everything after it.
 
 <!-- START SDLC: discovery_research -->
+<!-- DISPATCH: role=Research Agent | count=4 | parallel=true | model=High | via=dispatching-parallel-agents -->
 ## Phase 1 — Discovery (gates everything)
 
 1. **Idea capture** — ask exactly one question: "What are you building, in a sentence?" Use the answer to seed research and later stack questions. Do not persist it as a vision doc.
@@ -37,6 +38,7 @@ Discovery → Setup → Scaffold spec → Handoff. Each phase is defined below. 
 <!-- END SDLC: discovery_research -->
 
 <!-- START SDLC: requirements_user_stories -->
+<!-- DISPATCH: inline | reason=interactive Q&A with user, one question at a time -->
 ## Phase 2 — Setup
 
 Ask questions **one at a time**, multiple-choice where possible (same discipline as `brainstorming`), informed by the discovery doc.
@@ -48,6 +50,7 @@ Ask questions **one at a time**, multiple-choice where possible (same discipline
 <!-- END SDLC: requirements_user_stories -->
 
 <!-- START SDLC: architecture_design -->
+<!-- DISPATCH: inline | reason=spec writing requires user context and approval before handoff -->
 ## Phase 3 — Scaffold spec
 
 Write `docs/superpowers/specs/YYYY-MM-DD-<topic>-scaffold-design.md` using the standard `brainstorming` spec format and self-review, scoped to tooling not features. Express all concrete scaffolding as **tasks for the plan** (do NOT run them here):

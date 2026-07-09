@@ -12,6 +12,7 @@ Code review requires technical evaluation, not emotional performance.
 **Core principle:** Verify before implementing. Ask before assuming. Technical correctness over social comfort.
 
 <!-- START SDLC: code_review_quality -->
+<!-- DISPATCH: inline | reason=evaluating feedback requires controller judgment, verify against codebase before accepting -->
 ## The Response Pattern
 
 ```
@@ -100,6 +101,7 @@ IF reviewer suggests "implementing properly":
 <!-- END SDLC: code_review_quality -->
 
 <!-- START SDLC: implementation_coding -->
+<!-- DISPATCH: role=Fix Agent | count=1 | model=Standard | condition=feedback items verified and accepted | note=could dispatch fixer for multi-item batch -->
 ## Implementation Order
 
 ```

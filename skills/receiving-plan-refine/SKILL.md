@@ -18,6 +18,7 @@ Technical correctness over blind acceptance.
 evaluate the refine findings."
 
 <!-- START SDLC: code_review_quality -->
+<!-- DISPATCH: inline | reason=evaluating findings requires controller judgment, verify before accept/reject -->
 ## The Process
 
 1. **Read** the findings file (path handed off from `requesting-plan-refine`).

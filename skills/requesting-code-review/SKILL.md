@@ -22,6 +22,7 @@ Dispatch a code reviewer subagent to catch issues before they cascade. The revie
 - After fixing complex bug
 
 <!-- START SDLC: code_review_quality -->
+<!-- DISPATCH: role=Code Reviewer | count=1 | model=High | template=code-reviewer.md -->
 ## How to Request
 
 **1. Get git SHAs:**

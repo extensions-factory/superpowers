@@ -16,6 +16,7 @@ Guide completion of development work by presenting clear options and handling ch
 ## The Process
 
 <!-- START SDLC: testing_qa -->
+<!-- DISPATCH: inline | reason=test verification must happen before presenting options, controller gate -->
 ### Step 1: Verify Tests
 
 **Before presenting options, verify tests pass:**
@@ -40,6 +41,7 @@ Stop. Don't proceed to Step 2.
 <!-- END SDLC: testing_qa -->
 
 <!-- START SDLC: release_deployment -->
+<!-- DISPATCH: inline | reason=merge/PR/cleanup workflow requires user choice and interactive confirmation -->
 ### Step 2: Detect Environment
 
 **Determine workspace state before presenting options:**

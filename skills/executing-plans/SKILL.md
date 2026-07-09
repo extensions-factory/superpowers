@@ -16,6 +16,7 @@ Load plan, review critically, execute all tasks, report when complete.
 ## The Process
 
 <!-- START SDLC: sprint_planning -->
+<!-- DISPATCH: inline | reason=plan review is controller work, needs full context to raise concerns -->
 ### Step 1: Load and Review Plan
 1. Read plan file
 2. Review critically - identify any questions or concerns about the plan
@@ -24,6 +25,7 @@ Load plan, review critically, execute all tasks, report when complete.
 <!-- END SDLC: sprint_planning -->
 
 <!-- START SDLC: implementation_coding -->
+<!-- DISPATCH: inline | reason=this skill IS the inline fallback when subagents unavailable; use SDD for subagent execution -->
 ### Step 2: Execute Tasks
 
 For each task:

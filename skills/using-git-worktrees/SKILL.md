@@ -14,6 +14,7 @@ Ensure work happens in an isolated workspace. Prefer your platform's native work
 **Announce at start:** "I'm using the using-git-worktrees skill to set up an isolated workspace."
 
 <!-- START SDLC: release_deployment -->
+<!-- DISPATCH: inline | reason=workspace setup is environment-specific, must detect before any delegation -->
 ## Step 0: Detect Existing Isolation
 
 **Before creating anything, check if you are already in an isolated workspace.**
@@ -102,6 +103,7 @@ cd "$path"
 <!-- END SDLC: release_deployment -->
 
 <!-- START SDLC: testing_qa -->
+<!-- DISPATCH: inline | reason=baseline verification must confirm workspace is clean before any implementation -->
 ## Step 2: Project Setup
 
 Auto-detect and run appropriate setup:
