@@ -163,3 +163,26 @@ When Claude authored most of the branch, run
 `/codex:adversarial-review --base <ref>` as an *additional* pre-final gate
 before dispatching the Claude Final Reviewer — this is additive, not a
 substitute for the Claude final review.
+
+## Cross-Review Cycle
+
+Standard three-beat shape for any reviewed artifact — a plan, a spec, or
+code:
+
+```
+[Author]  --artifact-->  [Counter-Review]  --findings file-->  [Adjudicate]
+```
+
+| Beat | Who | Mechanism | Output |
+|---|---|---|---|
+| Author | Orchestrator (plan/spec) or execution subagent (code) | `writing-plans`, an Implementer dispatch | artifact (plan file, diff, spec) |
+| Counter-Review | Provider different from author, per Diversity Routing above | `requesting-plan-refine` / `requesting-code-review` | findings file at that skill's existing conventional path (e.g. `.superpowers/plan-refine/<plan-basename>-findings.md`) |
+| Adjudicate | Orchestrator, always | `receiving-plan-refine` / `receiving-code-review` | accept/reject per finding, fixes applied, human partner informed |
+
+The findings-file convention is not new — `requesting-plan-refine` already
+writes there. This section only ties the *provider* of that review step to
+the Diversity Routing rule above; the file mechanism is unchanged.
+
+Codex-side counter-review runs as a background job: dispatch with
+`--background`, poll with `/codex:status`, retrieve with `/codex:result`
+(which also returns the Codex session ID for `codex resume` if needed).
