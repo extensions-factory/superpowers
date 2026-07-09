@@ -172,7 +172,7 @@ Don't add features, refactor other code, or "improve" beyond the test.
 <!-- END SDLC: implementation_coding -->
 
 <!-- START SDLC: testing_qa -->
-<!-- DISPATCH: inline | reason=verify GREEN + REFACTOR must stay in same context as implementation -->
+<!-- DISPATCH: inline | reason=verify GREEN before refactor; evidence gate stays in controller context -->
 ### Verify GREEN - Watch It Pass
 
 **MANDATORY.**
@@ -189,7 +189,10 @@ Confirm:
 **Test fails?** Fix code, not test.
 
 **Other tests fail?** Fix now.
+<!-- END SDLC: testing_qa -->
 
+<!-- START SDLC: implementation_coding -->
+<!-- DISPATCH: inline | reason=refactor only after GREEN, then re-run verification -->
 ### REFACTOR - Clean Up
 
 After green only:
@@ -198,7 +201,7 @@ After green only:
 - Extract helpers
 
 Keep tests green. Don't add behavior.
-<!-- END SDLC: testing_qa -->
+<!-- END SDLC: implementation_coding -->
 
 ### Repeat
 

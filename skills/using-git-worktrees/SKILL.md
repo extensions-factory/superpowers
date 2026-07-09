@@ -13,7 +13,7 @@ Ensure work happens in an isolated workspace. Prefer your platform's native work
 
 **Announce at start:** "I'm using the using-git-worktrees skill to set up an isolated workspace."
 
-<!-- START SDLC: release_deployment -->
+<!-- START SDLC: workspace_setup -->
 <!-- DISPATCH: inline | reason=workspace setup is environment-specific, must detect before any delegation -->
 ## Step 0: Detect Existing Isolation
 
@@ -100,7 +100,7 @@ cd "$path"
 ```
 
 **Sandbox fallback:** If `git worktree add` fails with a permission error (sandbox denial), tell the user the sandbox blocked worktree creation and you're working in the current directory instead. Then run setup and baseline tests in place.
-<!-- END SDLC: release_deployment -->
+<!-- END SDLC: workspace_setup -->
 
 <!-- START SDLC: testing_qa -->
 <!-- DISPATCH: inline | reason=baseline verification must confirm workspace is clean before any implementation -->

@@ -111,7 +111,7 @@ digraph brainstorming {
 ## After the Design
 
 <!-- START SDLC: documentation_knowledge_transfer -->
-<!-- DISPATCH: role=Documentation Agent | count=1 | model=Standard | note=could draft spec + HTML companion to file -->
+<!-- DISPATCH: role=Documentation Agent | count=1 | model=Standard | note=draft spec + HTML only; controller keeps roadmap, self-review, commit, and user gate -->
 **Documentation:**
 
 - Write the validated design (spec) to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`

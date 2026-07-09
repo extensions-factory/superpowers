@@ -393,7 +393,6 @@ Edit skill without testing? Same violation.
 **REQUIRED BACKGROUND:** The superpowers:test-driven-development skill explains why this matters. Same principles apply to documentation.
 
 <!-- START SDLC: testing_qa -->
-<!-- DISPATCH: role=Test Subject | count=1+ | model=Standard | note=dispatch fresh subagent per pressure scenario, baseline WITHOUT skill then WITH skill -->
 ## Testing All Skill Types
 
 Different skill types need different test approaches:
