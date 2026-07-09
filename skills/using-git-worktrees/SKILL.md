@@ -100,10 +100,7 @@ cd "$path"
 ```
 
 **Sandbox fallback:** If `git worktree add` fails with a permission error (sandbox denial), tell the user the sandbox blocked worktree creation and you're working in the current directory instead. Then run setup and baseline tests in place.
-<!-- END SDLC: workspace_setup -->
 
-<!-- START SDLC: testing_qa -->
-<!-- DISPATCH: inline | reason=baseline verification must confirm workspace is clean before any implementation -->
 ## Step 2: Project Setup
 
 Auto-detect and run appropriate setup:
@@ -143,7 +140,7 @@ Worktree ready at <full-path>
 Tests passing (<N> tests, 0 failures)
 Ready to implement <feature-name>
 ```
-<!-- END SDLC: testing_qa -->
+<!-- END SDLC: workspace_setup -->
 
 ## Quick Reference
 

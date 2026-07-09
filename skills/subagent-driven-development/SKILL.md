@@ -158,7 +158,7 @@ Implementer subagents report one of four statuses. Handle each appropriately:
 
 <!-- START SDLC: code_review_quality -->
 <!-- DISPATCH: role=Task Reviewer | count=1 | per_task=true | model=scaled to diff | template=task-reviewer-prompt.md -->
-<!-- DISPATCH: role=Fix Agent | count=1 | on_condition=Critical/Important findings | template=implementer contract -->
+<!-- DISPATCH: role=Fix Agent | count=1 | model=Standard | on_condition=Critical/Important findings | template=implementer contract -->
 <!-- DISPATCH: role=Final Reviewer | count=1 | after=all tasks | model=most capable | template=requesting-code-review/code-reviewer.md -->
 ## Handling Reviewer ⚠️ Items
 

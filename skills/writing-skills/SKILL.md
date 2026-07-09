@@ -551,7 +551,7 @@ Add to description: symptoms of when you're ABOUT to violate the rule:
 description: use when implementing any feature or bugfix, before writing implementation code
 ```
 
-<!-- START SDLC: retrospective_process_improvement -->
+<!-- START SDLC: testing_qa -->
 <!-- DISPATCH: role=Test Subject | count=1+ | model=Standard | note=RED=subagent WITHOUT skill, GREEN=subagent WITH skill, REFACTOR=find loopholes -->
 ## RED-GREEN-REFACTOR for Skills
 
@@ -587,7 +587,7 @@ Full pressure-scenario runs are the final gate, but they are slow and expensive 
 5. **Variance is a metric.** When guidance lands, reps converge on the same shape. Five different interpretations across five reps means the wording isn't binding — tighten the form before adding words.
 
 Micro-tests verify wording; they do not replace pressure scenarios for discipline skills.
-<!-- END SDLC: retrospective_process_improvement -->
+<!-- END SDLC: testing_qa -->
 
 **Testing methodology:** See [testing-skills-with-subagents.md](testing-skills-with-subagents.md) for the complete testing methodology:
 - How to write pressure scenarios

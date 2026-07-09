@@ -75,16 +75,14 @@ digraph brainstorming {
 - Focus on understanding: purpose, constraints, success criteria
 <!-- END SDLC: discovery_research -->
 
-<!-- START SDLC: requirements_user_stories -->
+<!-- START SDLC: architecture_design -->
 <!-- DISPATCH: inline | reason=interactive Q&A, one question at a time, needs user decisions -->
 **Exploring approaches:**
 
 - Propose 2-3 different approaches with trade-offs
 - Present options conversationally with your recommendation and reasoning
 - Lead with your recommended option and explain why
-<!-- END SDLC: requirements_user_stories -->
 
-<!-- START SDLC: architecture_design -->
 <!-- DISPATCH: inline | reason=interactive design presentation, user approves section by section -->
 **Presenting the design:**
 
