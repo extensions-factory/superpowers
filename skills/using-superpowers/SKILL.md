@@ -3,9 +3,21 @@ name: using-superpowers
 description: Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions
 ---
 
-<SUBAGENT-STOP>
-If you were dispatched as a subagent to execute a specific task, ignore this skill.
-</SUBAGENT-STOP>
+## Role Mode
+
+Determine your role before doing anything else:
+
+1. **Prompt header wins.** If the task you received starts with `ROLE: orchestrator` or `ROLE: subagent`, use that — regardless of harness.
+2. **No header → harness default.** Claude Code's main session is `orchestrator`. A session opened directly on Codex or Antigravity CLI defaults to `subagent` (see that harness's reference file below). Any other harness (e.g. Pi) has no default role in this pass — it is neither a dispatch target nor a declared orchestrator yet; treat a bare session there as `orchestrator` (the safe interactive default) until its own reference file declares otherwise.
+
+**If your role is `subagent`:**
+
+- Still follow disciplinary skills (`test-driven-development`, `systematic-debugging`, `verification-before-completion`, `writing-skills`) for the task itself.
+- Do NOT invoke interactive or coordination skills (`brainstorming`, `project-kickoff`, `writing-plans`, `executing-plans`, `subagent-driven-development`, `dispatching-parallel-agents`, `finishing-a-development-branch`, `requesting-*`, `receiving-*`, `using-git-worktrees`) — full list and rationale in `references/dispatch.md`.
+- Do NOT spawn further agents — no nesting, regardless of what your harness technically supports.
+- Do NOT ask your human partner a question. If you hit ambiguity you cannot resolve from the task and codebase, report `BLOCKED: <specific question>` back to the orchestrator instead of guessing or asking.
+
+**If your role is `orchestrator`:** continue below.
 
 <EXTREMELY-IMPORTANT>
 If you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.
