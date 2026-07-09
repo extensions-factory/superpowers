@@ -81,3 +81,58 @@ it does not install or load the skill bootstrap. Claude subagents (via the
 mechanism automatically. If a dispatched subagent's report shows it never
 loaded `using-superpowers`, the skill set isn't installed on that side —
 fix the install, don't rely on the prompt header alone.
+
+## Offload-First Routing (Execution Roles)
+
+**Execution roles:** `Implementer`, `Fix Agent`, `Specialist Agent`,
+`Research Agent`, `Documentation Agent`, `Test Subject`.
+
+**Provider order:** try Codex first, then Antigravity CLI, then Claude —
+in that order, taking the first one available:
+
+1. **Codex** — available if installed and authenticated (`/codex:setup`
+   confirms this). Try first for every execution role.
+2. **Antigravity CLI** — available once a dispatch plugin exists. Until
+   then, always unavailable; skip automatically, this is not an error.
+3. **Claude** (`Agent` tool) — last resort. Use when Codex is unavailable
+   and Antigravity has no spawn mechanism.
+
+**Model tier resolution**, once a provider is chosen:
+
+| DISPATCH `model=` tier | Codex | Claude Code | Antigravity CLI (once available) |
+|---|---|---|---|
+| `cheap` | `gpt-5.4-mini` | `haiku` | Gemini 3.5 Flash (Low) |
+| `Standard` | `gpt-5.4` | `sonnet` | Gemini 3.5 Flash (Medium) |
+| `High` | `gpt-5.5` | `opus` | Gemini 3.5 Flash (High) |
+| `most capable` | `gpt-5.5` | `fable` | Claude Opus 4.6 (Thinking) |
+| `scaled to diff` / `by complexity` | resolve to a fixed tier via the complexity bands below, then read across normally | | |
+
+**Complexity bands** (for `scaled to diff` and `by complexity` tiers —
+pick the highest band the task reaches):
+
+- `cheap` — a single-function or single-file mechanical change: renames, a
+  localized bug fix, a config edit, an isolated test.
+- `Standard` — a few related files with real logic, but a bounded blast
+  radius the implementer can hold in context at once. This is the default
+  when unsure.
+- `High` — cross-cutting or architectural: touches many files, changes a
+  shared interface, or needs design judgment about how pieces fit.
+
+When a task straddles two bands, take the higher one — an under-powered
+implementer that stalls costs more than the tier saved.
+
+Then cross-check against `scripts/model-lookup.sh <task_type>` (the
+`task_type` named in the skill's `<!-- START SDLC: task_type -->` tag): if
+the tier-mapped model for the chosen provider appears in that task type's
+ranked list, use it. If the chosen provider has no entry for that task
+type, use the tier-mapped model directly — `sdlc-model-routing.json`'s
+ranking is a refinement of this table, not a replacement for it.
+
+**Substitution:** if Codex is unavailable (not installed, not
+authenticated, rate-limited), fall back to Claude at the equivalent tier
+and state the substitution before dispatching.
+
+**Parallel dispatches:** when multiple execution subagents are dispatched
+at once (see `dispatching-parallel-agents`), each gets independent
+provider selection per this order — they do not coordinate with each
+other, since no nesting means no cross-subagent spawning either.
