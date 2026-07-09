@@ -87,6 +87,7 @@ As the user relying on review to catch mistakes, I want a reviewer to never shar
 - GIVEN an artifact authored by a Codex execution subagent — e.g. implementation code — WHEN a judgment-role DISPATCH fires for it, THEN the reviewer is dispatched to a non-Codex provider (Claude subagent by default).
 - GIVEN the diversity rule cannot be honored (only one provider available), WHEN the orchestrator proceeds with a same-provider reviewer, THEN it states explicitly that provider diversity was not honored and why.
 - GIVEN any review is complete, WHEN the whole-branch final review runs, THEN it is always dispatched to Claude, per the user's standing decision.
+- GIVEN Claude authored most of the branch, WHEN the orchestrator prepares the final review, THEN it also runs `/codex:adversarial-review --base <ref>` as an additional pre-final gate before the Claude final review, rather than relying on the same-provider final review alone.
 
 ### US-5: Cross-review cycle produces a file, not context pollution (Priority: P2)
 
@@ -143,7 +144,7 @@ Claude Code (orchestrator, user-facing)
 - Tag grammar: formal definition of `role`, `count`, `model`, `parallel`, `per_task`, `condition`, `template`, `via`, `note`.
 - Skill role-class table: which skills are orchestrator-only (interactive: `brainstorming`, `project-kickoff`, `finishing-a-development-branch`; coordination: `writing-plans`, `executing-plans`, `subagent-driven-development`, `dispatching-parallel-agents`, `requesting-*`, `receiving-*`, `using-git-worktrees`) vs. subagent-ok (`test-driven-development`, `systematic-debugging`, `verification-before-completion`, `writing-skills`, and any role dispatched with a reviewer template).
 - Offload-first routing for execution roles: Codex → Antigravity (placeholder) → Claude, with tier→model mapping per provider sourced from `sdlc-model-routing.json` via `scripts/model-lookup.sh`.
-- Diversity routing for judgment roles: reviewer provider ≠ author provider; Final Reviewer always Claude.
+- Diversity routing for judgment roles: reviewer provider ≠ author provider; Final Reviewer always Claude, with a `/codex:adversarial-review` pre-final gate when Claude authored most of the branch.
 - Spawn-mechanism table per provider (Codex: `/codex:rescue`, `/codex:review`, `/codex:adversarial-review`, background + `--resume`; Claude: `Agent` tool; Antigravity: none yet, documented placeholder).
 - Dispatch prompt template with `ROLE:`/`TASK_TYPE:` header.
 - The cross-review cycle (below).
@@ -166,6 +167,8 @@ Standard three-beat shape for any reviewed artifact:
 | Adjudicate | Orchestrator, always | `receiving-plan-refine` / `receiving-code-review` | accept/reject per finding, fixes applied, user informed |
 
 This generalizes the sequence already implicit in the existing skill pair names — `writing-plans → requesting-plan-refine → receiving-plan-refine` and the code equivalent — by making explicit which beat runs on which provider and enforcing that the review beat is never same-provider as the author beat when an alternative exists. The mechanism itself (findings-to-file, not inline) is not new — `requesting-plan-refine` already writes to a directory with a `.gitignore`; this spec generalizes the pattern and ties it to provider selection rather than introducing a new file convention. Codex-side counter-review runs as a background job; the orchestrator polls via `/codex:status` and retrieves via `/codex:result`.
+
+**Final review exception:** per the user's standing decision, the whole-branch Final Reviewer is always Claude, even when Claude authored the branch — this is the one place the diversity rule is deliberately overridden. To avoid Claude reviewing its own work uncontested, when Claude authored most of the branch, the orchestrator additionally runs `/codex:adversarial-review --base <ref>` as a pre-final gate before the Claude final review. This is additive (an extra gate), not a substitute for the Claude final review.
 
 ### Error Handling
 
