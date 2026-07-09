@@ -1,5 +1,13 @@
 # Superpowers Release Notes
 
+## v6.4.6 (2026-07-09)
+
+### SDLC Dispatch Layer
+
+- **The `DISPATCH` tags are now an actual guideline, not inert labels.** `using-superpowers` gains a **Role Mode** block (a session determines whether it is an orchestrator or a subagent from a `ROLE:` prompt header, or the harness default — Claude Code = orchestrator, Codex/Antigravity = subagent) and a mandatory **SDLC Dispatch** rule: when a skill block carries `<!-- DISPATCH: role=... -->`, the orchestrator must dispatch a subagent, with exactly two escape hatches (explicit user instruction to work inline, or no provider available). A subagent may not brainstorm, ask the user, or spawn further agents — it executes or reports `BLOCKED`.
+- **New `references/dispatch.md`** carries the mechanics: tag grammar, the skill role-class table (orchestrator-only vs subagent-ok), the per-provider spawn table, the dispatch prompt template, offload-first routing for execution roles (Codex → Antigravity → Claude) with complexity bands, provider-diversity routing for judgment roles (a reviewer never shares a provider with the artifact's author; the whole-branch Final Reviewer stays Claude with a Codex adversarial-review pre-final gate), and the author → counter-review-to-file → adjudicate cross-review cycle.
+- Supersedes the parallel v6.4.5 `delegating-to-workers` worker-routing approach; this guideline-based layer is now the canonical direction. (v6.4.5 was released on a separate line and is not part of `main`.)
+
 ## v6.4.4 (2026-07-06)
 
 ### Pull Requests
