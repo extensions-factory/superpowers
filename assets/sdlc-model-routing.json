@@ -1,15 +1,18 @@
 {
   "schema_version": "1.0",
-  "last_researched_at": "2026-07-09",
+  "last_researched_at": "2026-07-10",
   "model_name_policy": "Every recommended_models[].model value must not be normalized before passing to --model.",
   "selection_rules": [
     "Use the first recommended model unless cost, latency, privacy, or provider availability pushes you to another listed model.",
-    "Use High, Thinking, fable, opus, or gpt-5.5 for ambiguous, high-risk, multi-file, long-context, security, or architecture work.",
-    "Use Low, mini, haiku, or GPT-OSS 120B (Medium) for bounded, repetitive, low-risk, or private/offline work.",
+    "Use High, Thinking, fable, opus, or gpt-5.6-sol for ambiguous, high-risk, multi-file, long-context, security, or architecture work.",
+    "Use Low, mini, haiku, gpt-5.6-luna, or GPT-OSS 120B (Medium) for bounded, repetitive, low-risk, or private/offline work.",
     "Use provider diversity for review: ask a different provider than the one that produced the first draft."
   ],
   "providers": {
     "Codex": [
+      "gpt-5.6-sol",
+      "gpt-5.6-terra",
+      "gpt-5.6-luna",
       "gpt-5.5",
       "gpt-5.4",
       "gpt-5.4-mini"
@@ -31,6 +34,48 @@
     ]
   },
   "model_catalog": {
+    "codex.gpt-5.6-sol": {
+      "provider": "Codex",
+      "model": "gpt-5.6-sol",
+      "role": "Latest frontier agentic coding model.",
+      "best_for": [
+        "architecture_design",
+        "code_review_quality",
+        "debugging_root_cause",
+        "discovery_research",
+        "monitoring_incident_ops",
+        "retrospective_process_improvement",
+        "security_review",
+        "sprint_planning",
+        "ui_ux_prototyping"
+      ]
+    },
+    "codex.gpt-5.6-terra": {
+      "provider": "Codex",
+      "model": "gpt-5.6-terra",
+      "role": "Balanced agentic coding model for everyday work.",
+      "best_for": [
+        "backlog_refinement_prioritization",
+        "documentation_knowledge_transfer",
+        "implementation_coding",
+        "release_deployment",
+        "requirements_user_stories",
+        "testing_qa",
+        "ui_ux_prototyping",
+        "workspace_setup"
+      ]
+    },
+    "codex.gpt-5.6-luna": {
+      "provider": "Codex",
+      "model": "gpt-5.6-luna",
+      "role": "Fast and affordable agentic coding model.",
+      "best_for": [
+        "backlog_refinement_prioritization",
+        "implementation_coding",
+        "testing_qa",
+        "workspace_setup"
+      ]
+    },
     "codex.gpt-5.5": {
       "provider": "Codex",
       "model": "gpt-5.5",
@@ -230,7 +275,7 @@
         {
           "rank": 2,
           "provider": "Codex",
-          "model": "gpt-5.5",
+          "model": "gpt-5.6-sol",
           "why": "Strong for complex synthesis and professional reasoning."
         },
         {
@@ -278,7 +323,7 @@
         {
           "rank": 3,
           "provider": "Codex",
-          "model": "gpt-5.4",
+          "model": "gpt-5.6-terra",
           "why": "Solid professional writing plus coding awareness."
         },
         {
@@ -327,13 +372,13 @@
         {
           "rank": 4,
           "provider": "Codex",
-          "model": "gpt-5.4",
+          "model": "gpt-5.6-terra",
           "why": "Good cost/performance for everyday engineering planning."
         },
         {
           "rank": 5,
           "provider": "Codex",
-          "model": "gpt-5.4-mini",
+          "model": "gpt-5.6-luna",
           "why": "Fast option for small, obvious refinement."
         }
       ]
@@ -352,7 +397,7 @@
         {
           "rank": 1,
           "provider": "Codex",
-          "model": "gpt-5.5",
+          "model": "gpt-5.6-sol",
           "why": "Best OpenAI option for complex reasoning and coding plans."
         },
         {
@@ -401,7 +446,7 @@
         {
           "rank": 2,
           "provider": "Codex",
-          "model": "gpt-5.5",
+          "model": "gpt-5.6-sol",
           "why": "Strong complex reasoning and coding-aware design."
         },
         {
@@ -444,13 +489,13 @@
         {
           "rank": 2,
           "provider": "Codex",
-          "model": "gpt-5.4",
+          "model": "gpt-5.6-terra",
           "why": "Strong for frontend coding and computer-use workflows."
         },
         {
           "rank": 3,
           "provider": "Codex",
-          "model": "gpt-5.5",
+          "model": "gpt-5.6-sol",
           "why": "Use for complex frontend architecture or production-grade flows."
         },
         {
@@ -487,7 +532,7 @@
         {
           "rank": 2,
           "provider": "Codex",
-          "model": "gpt-5.4",
+          "model": "gpt-5.6-terra",
           "why": "Strong coding model with good cost/performance."
         },
         {
@@ -505,7 +550,7 @@
         {
           "rank": 5,
           "provider": "Codex",
-          "model": "gpt-5.4-mini",
+          "model": "gpt-5.6-luna",
           "why": "Fast for small, bounded changes."
         }
       ]
@@ -536,7 +581,7 @@
         {
           "rank": 3,
           "provider": "Codex",
-          "model": "gpt-5.5",
+          "model": "gpt-5.6-sol",
           "why": "Strong for hard reasoning and coding fixes."
         },
         {
@@ -578,7 +623,7 @@
         {
           "rank": 3,
           "provider": "Codex",
-          "model": "gpt-5.5",
+          "model": "gpt-5.6-sol",
           "why": "Good independent frontier review."
         },
         {
@@ -609,7 +654,7 @@
         {
           "rank": 1,
           "provider": "Codex",
-          "model": "gpt-5.4",
+          "model": "gpt-5.6-terra",
           "why": "Strong for coding tests and verification logic."
         },
         {
@@ -633,7 +678,7 @@
         {
           "rank": 5,
           "provider": "Codex",
-          "model": "gpt-5.4-mini",
+          "model": "gpt-5.6-luna",
           "why": "Fast for simple unit tests and expected-output checks."
         }
       ]
@@ -663,7 +708,7 @@
         {
           "rank": 3,
           "provider": "Codex",
-          "model": "gpt-5.5",
+          "model": "gpt-5.6-sol",
           "why": "Strong independent security reasoning."
         },
         {
@@ -694,7 +739,7 @@
         {
           "rank": 1,
           "provider": "Codex",
-          "model": "gpt-5.4",
+          "model": "gpt-5.6-terra",
           "why": "Good for practical deployment and automation tasks."
         },
         {
@@ -737,7 +782,7 @@
         {
           "rank": 1,
           "provider": "Codex",
-          "model": "gpt-5.4-mini",
+          "model": "gpt-5.6-luna",
           "why": "Fast for bounded workspace and repository setup checks."
         },
         {
@@ -755,7 +800,7 @@
         {
           "rank": 4,
           "provider": "Codex",
-          "model": "gpt-5.4",
+          "model": "gpt-5.6-terra",
           "why": "Use when setup touches several project conventions."
         },
         {
@@ -792,7 +837,7 @@
         {
           "rank": 3,
           "provider": "Codex",
-          "model": "gpt-5.5",
+          "model": "gpt-5.6-sol",
           "why": "Strong for incident synthesis and remediation plans."
         },
         {
@@ -835,7 +880,7 @@
         {
           "rank": 3,
           "provider": "Codex",
-          "model": "gpt-5.4",
+          "model": "gpt-5.6-terra",
           "why": "Good professional writing with code awareness."
         },
         {
@@ -865,7 +910,7 @@
         {
           "rank": 1,
           "provider": "Codex",
-          "model": "gpt-5.5",
+          "model": "gpt-5.6-sol",
           "why": "Strong for cross-signal reasoning and improvement planning."
         },
         {
